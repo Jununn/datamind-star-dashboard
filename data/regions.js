@@ -1,0 +1,1286 @@
+window.DATAMIND_REGIONS_SNAPSHOT = {
+  "repo": "OpenDCAI/DataMind",
+  "fetched_at": "2026-09-18T03:24:45.021255Z",
+  "source": "GitHub GraphQL API repository.stargazers edges.starredAt and node.location",
+  "source_url": "https://api.github.com/graphql",
+  "timezone": "UTC",
+  "total": 123,
+  "coverage": "全部当前 stargazer，已遍历全部分页",
+  "classification_policy": "按用户当前公开 location 统计地理位置，不推断国籍；中国地区在本表含内地、香港、澳门、台湾；未填写、非地理文字与跨区域地点归为未知。月份按 starredAt UTC 分组。",
+  "summary": [
+    {
+      "period": "2026-04",
+      "total": 2,
+      "china": 0,
+      "overseas": 0,
+      "unknown": 2
+    },
+    {
+      "period": "2026-05",
+      "total": 4,
+      "china": 3,
+      "overseas": 0,
+      "unknown": 1
+    },
+    {
+      "period": "2026-06",
+      "total": 1,
+      "china": 0,
+      "overseas": 0,
+      "unknown": 1
+    },
+    {
+      "period": "2026-07",
+      "total": 17,
+      "china": 4,
+      "overseas": 1,
+      "unknown": 12
+    },
+    {
+      "period": "2026-08",
+      "total": 1,
+      "china": 0,
+      "overseas": 0,
+      "unknown": 1
+    },
+    {
+      "period": "2026-09",
+      "total": 98,
+      "china": 27,
+      "overseas": 44,
+      "unknown": 27
+    }
+  ],
+  "records": [
+    {
+      "login": "studyworkQAQ",
+      "profile_url": "https://github.com/studyworkQAQ",
+      "starred_at": "2026-04-07T07:46:56Z",
+      "date": "2026-04",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "rayrayss",
+      "profile_url": "https://github.com/rayrayss",
+      "starred_at": "2026-04-21T04:07:16Z",
+      "date": "2026-04",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "duanchy3",
+      "profile_url": "https://github.com/duanchy3",
+      "starred_at": "2026-05-13T05:59:24Z",
+      "date": "2026-05",
+      "location": "Beijing",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "SunnyHaze",
+      "profile_url": "https://github.com/SunnyHaze",
+      "starred_at": "2026-05-16T14:12:45Z",
+      "date": "2026-05",
+      "location": "Hong Kong SAR",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Jununn",
+      "profile_url": "https://github.com/Jununn",
+      "starred_at": "2026-05-18T07:06:52Z",
+      "date": "2026-05",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "zwt233",
+      "profile_url": "https://github.com/zwt233",
+      "starred_at": "2026-05-24T04:14:13Z",
+      "date": "2026-05",
+      "location": "Beijing",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "aidanmsiru",
+      "profile_url": "https://github.com/aidanmsiru",
+      "starred_at": "2026-06-28T19:05:10Z",
+      "date": "2026-06",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "waylenchouzw-byte",
+      "profile_url": "https://github.com/waylenchouzw-byte",
+      "starred_at": "2026-07-18T02:57:57Z",
+      "date": "2026-07",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Snowy2333",
+      "profile_url": "https://github.com/Snowy2333",
+      "starred_at": "2026-07-18T02:58:54Z",
+      "date": "2026-07",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "xuefengl908",
+      "profile_url": "https://github.com/xuefengl908",
+      "starred_at": "2026-07-18T03:01:25Z",
+      "date": "2026-07",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "stellg",
+      "profile_url": "https://github.com/stellg",
+      "starred_at": "2026-07-18T03:02:31Z",
+      "date": "2026-07",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "xiaoxiandemimi",
+      "profile_url": "https://github.com/xiaoxiandemimi",
+      "starred_at": "2026-07-18T03:09:11Z",
+      "date": "2026-07",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "youngslaves-a11y",
+      "profile_url": "https://github.com/youngslaves-a11y",
+      "starred_at": "2026-07-18T03:55:08Z",
+      "date": "2026-07",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "zhangdandansiyu-alt",
+      "profile_url": "https://github.com/zhangdandansiyu-alt",
+      "starred_at": "2026-07-18T04:16:24Z",
+      "date": "2026-07",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "PhiloSky",
+      "profile_url": "https://github.com/PhiloSky",
+      "starred_at": "2026-07-18T04:54:00Z",
+      "date": "2026-07",
+      "location": "China",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "SiinXu",
+      "profile_url": "https://github.com/SiinXu",
+      "starred_at": "2026-07-18T04:55:25Z",
+      "date": "2026-07",
+      "location": "Shanghai",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "PutFounder5297",
+      "profile_url": "https://github.com/PutFounder5297",
+      "starred_at": "2026-07-20T06:37:05Z",
+      "date": "2026-07",
+      "location": " Fengxian District, Shanghai, China",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "clarkzhujia-ship-it",
+      "profile_url": "https://github.com/clarkzhujia-ship-it",
+      "starred_at": "2026-07-20T07:13:47Z",
+      "date": "2026-07",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "yangye230147961",
+      "profile_url": "https://github.com/yangye230147961",
+      "starred_at": "2026-07-20T07:15:31Z",
+      "date": "2026-07",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "MorningStar0709",
+      "profile_url": "https://github.com/MorningStar0709",
+      "starred_at": "2026-07-20T10:43:40Z",
+      "date": "2026-07",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "zengbohan0217",
+      "profile_url": "https://github.com/zengbohan0217",
+      "starred_at": "2026-07-21T06:26:51Z",
+      "date": "2026-07",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "coolgenerator",
+      "profile_url": "https://github.com/coolgenerator",
+      "starred_at": "2026-07-24T16:10:22Z",
+      "date": "2026-07",
+      "location": "San Diego",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "JeffCarpenter",
+      "profile_url": "https://github.com/JeffCarpenter",
+      "starred_at": "2026-07-28T04:24:30Z",
+      "date": "2026-07",
+      "location": "True North",
+      "region": "unknown",
+      "reason": "模糊或非地理位置",
+      "profile_status": "ok"
+    },
+    {
+      "login": "topbat",
+      "profile_url": "https://github.com/topbat",
+      "starred_at": "2026-07-30T06:39:16Z",
+      "date": "2026-07",
+      "location": "shenzhen",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "JufangShen",
+      "profile_url": "https://github.com/JufangShen",
+      "starred_at": "2026-08-26T02:47:13Z",
+      "date": "2026-08",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "scuuy",
+      "profile_url": "https://github.com/scuuy",
+      "starred_at": "2026-09-08T03:59:03Z",
+      "date": "2026-09",
+      "location": "Beijing",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "spezwe2301",
+      "profile_url": "https://github.com/spezwe2301",
+      "starred_at": "2026-09-08T06:59:18Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "KeyCOrigin",
+      "profile_url": "https://github.com/KeyCOrigin",
+      "starred_at": "2026-09-12T18:47:04Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "haolpku",
+      "profile_url": "https://github.com/haolpku",
+      "starred_at": "2026-09-14T04:26:04Z",
+      "date": "2026-09",
+      "location": "Beijing, China",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "zchcc",
+      "profile_url": "https://github.com/zchcc",
+      "starred_at": "2026-09-14T06:14:51Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "aofalyb",
+      "profile_url": "https://github.com/aofalyb",
+      "starred_at": "2026-09-14T06:50:49Z",
+      "date": "2026-09",
+      "location": "Beijing/China",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "xiushen01",
+      "profile_url": "https://github.com/xiushen01",
+      "starred_at": "2026-09-14T06:55:14Z",
+      "date": "2026-09",
+      "location": "China",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "cainiaozp",
+      "profile_url": "https://github.com/cainiaozp",
+      "starred_at": "2026-09-14T07:03:16Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "aronke666",
+      "profile_url": "https://github.com/aronke666",
+      "starred_at": "2026-09-14T07:11:37Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "MagnetStone",
+      "profile_url": "https://github.com/MagnetStone",
+      "starred_at": "2026-09-14T08:00:45Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Walnutes",
+      "profile_url": "https://github.com/Walnutes",
+      "starred_at": "2026-09-14T08:26:16Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "linzixi",
+      "profile_url": "https://github.com/linzixi",
+      "starred_at": "2026-09-14T09:18:27Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "aipros",
+      "profile_url": "https://github.com/aipros",
+      "starred_at": "2026-09-14T10:10:09Z",
+      "date": "2026-09",
+      "location": "Shanghai",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Sec-Dev-Ops",
+      "profile_url": "https://github.com/Sec-Dev-Ops",
+      "starred_at": "2026-09-14T11:20:40Z",
+      "date": "2026-09",
+      "location": "Sioux Falls, SD",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "mono-max",
+      "profile_url": "https://github.com/mono-max",
+      "starred_at": "2026-09-14T11:42:08Z",
+      "date": "2026-09",
+      "location": "Beijing <> Tokyo",
+      "region": "unknown",
+      "reason": "跨地区填写，无法唯一归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "SuperAIGC",
+      "profile_url": "https://github.com/SuperAIGC",
+      "starred_at": "2026-09-14T12:23:49Z",
+      "date": "2026-09",
+      "location": "Korea",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Strawberry86",
+      "profile_url": "https://github.com/Strawberry86",
+      "starred_at": "2026-09-14T12:52:41Z",
+      "date": "2026-09",
+      "location": "Shenzhen, Guangdong, China",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "City40",
+      "profile_url": "https://github.com/City40",
+      "starred_at": "2026-09-14T13:32:54Z",
+      "date": "2026-09",
+      "location": "Семей‎",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "omigay",
+      "profile_url": "https://github.com/omigay",
+      "starred_at": "2026-09-14T14:06:48Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "vulkey",
+      "profile_url": "https://github.com/vulkey",
+      "starred_at": "2026-09-14T14:37:57Z",
+      "date": "2026-09",
+      "location": "Seoul",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "netocea",
+      "profile_url": "https://github.com/netocea",
+      "starred_at": "2026-09-14T15:15:58Z",
+      "date": "2026-09",
+      "location": "China",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "yedarn",
+      "profile_url": "https://github.com/yedarn",
+      "starred_at": "2026-09-14T16:03:54Z",
+      "date": "2026-09",
+      "location": "Hong Kong",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "ActivAai",
+      "profile_url": "https://github.com/ActivAai",
+      "starred_at": "2026-09-14T16:30:06Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "hujguo",
+      "profile_url": "https://github.com/hujguo",
+      "starred_at": "2026-09-14T17:02:51Z",
+      "date": "2026-09",
+      "location": "Nanjing",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "ladyicode",
+      "profile_url": "https://github.com/ladyicode",
+      "starred_at": "2026-09-14T17:29:16Z",
+      "date": "2026-09",
+      "location": "Chicago, IL",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "DifficultM",
+      "profile_url": "https://github.com/DifficultM",
+      "starred_at": "2026-09-14T18:34:36Z",
+      "date": "2026-09",
+      "location": "India",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "deerloong",
+      "profile_url": "https://github.com/deerloong",
+      "starred_at": "2026-09-14T18:58:06Z",
+      "date": "2026-09",
+      "location": "Nanchang",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "VCraze",
+      "profile_url": "https://github.com/VCraze",
+      "starred_at": "2026-09-14T19:23:21Z",
+      "date": "2026-09",
+      "location": "Bucket",
+      "region": "unknown",
+      "reason": "模糊或非地理位置",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Smallpots",
+      "profile_url": "https://github.com/Smallpots",
+      "starred_at": "2026-09-14T19:57:16Z",
+      "date": "2026-09",
+      "location": "Clifton Park, NY",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "baltilesser",
+      "profile_url": "https://github.com/baltilesser",
+      "starred_at": "2026-09-14T20:30:03Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "base996",
+      "profile_url": "https://github.com/base996",
+      "starred_at": "2026-09-14T21:03:12Z",
+      "date": "2026-09",
+      "location": "Birmingham, AL",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "SOCL2022",
+      "profile_url": "https://github.com/SOCL2022",
+      "starred_at": "2026-09-14T21:43:34Z",
+      "date": "2026-09",
+      "location": "Tokyo, Japan",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "jujusti",
+      "profile_url": "https://github.com/jujusti",
+      "starred_at": "2026-09-14T23:08:07Z",
+      "date": "2026-09",
+      "location": "Singapore",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "DadaTree",
+      "profile_url": "https://github.com/DadaTree",
+      "starred_at": "2026-09-14T23:51:46Z",
+      "date": "2026-09",
+      "location": "Oslo, Norway",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Ichigone",
+      "profile_url": "https://github.com/Ichigone",
+      "starred_at": "2026-09-15T00:54:52Z",
+      "date": "2026-09",
+      "location": "Japan",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "ZeusCSGO",
+      "profile_url": "https://github.com/ZeusCSGO",
+      "starred_at": "2026-09-15T01:34:25Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Yeonpyeong",
+      "profile_url": "https://github.com/Yeonpyeong",
+      "starred_at": "2026-09-15T02:15:58Z",
+      "date": "2026-09",
+      "location": "Cambridge, MA",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "sgxs2014",
+      "profile_url": "https://github.com/sgxs2014",
+      "starred_at": "2026-09-15T02:45:55Z",
+      "date": "2026-09",
+      "location": "Singapore",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Val3r13",
+      "profile_url": "https://github.com/Val3r13",
+      "starred_at": "2026-09-15T02:54:12Z",
+      "date": "2026-09",
+      "location": "New Territories",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "wetwaltz",
+      "profile_url": "https://github.com/wetwaltz",
+      "starred_at": "2026-09-15T03:24:02Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "valenhot",
+      "profile_url": "https://github.com/valenhot",
+      "starred_at": "2026-09-15T03:55:12Z",
+      "date": "2026-09",
+      "location": "Peking",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "hui13579246",
+      "profile_url": "https://github.com/hui13579246",
+      "starred_at": "2026-09-15T04:15:31Z",
+      "date": "2026-09",
+      "location": "Shanghai",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "dfiniorg",
+      "profile_url": "https://github.com/dfiniorg",
+      "starred_at": "2026-09-15T04:23:37Z",
+      "date": "2026-09",
+      "location": "Cyberspace",
+      "region": "unknown",
+      "reason": "模糊或非地理位置",
+      "profile_status": "ok"
+    },
+    {
+      "login": "econnoisseur",
+      "profile_url": "https://github.com/econnoisseur",
+      "starred_at": "2026-09-15T04:55:30Z",
+      "date": "2026-09",
+      "location": "Pune, Maharashtra, India",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "taylerhill",
+      "profile_url": "https://github.com/taylerhill",
+      "starred_at": "2026-09-15T05:06:55Z",
+      "date": "2026-09",
+      "location": "Shandong",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "syurilibe",
+      "profile_url": "https://github.com/syurilibe",
+      "starred_at": "2026-09-15T06:16:08Z",
+      "date": "2026-09",
+      "location": "Tokyo",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Glenda1965",
+      "profile_url": "https://github.com/Glenda1965",
+      "starred_at": "2026-09-15T06:55:31Z",
+      "date": "2026-09",
+      "location": "Philadelphia, PA",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Runtowheres",
+      "profile_url": "https://github.com/Runtowheres",
+      "starred_at": "2026-09-15T07:14:03Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "zoghot",
+      "profile_url": "https://github.com/zoghot",
+      "starred_at": "2026-09-15T07:41:51Z",
+      "date": "2026-09",
+      "location": "Pittsburgh, Pennsylvania",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "TSZEQ",
+      "profile_url": "https://github.com/TSZEQ",
+      "starred_at": "2026-09-15T08:04:40Z",
+      "date": "2026-09",
+      "location": "Sapporo",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Yunetone",
+      "profile_url": "https://github.com/Yunetone",
+      "starred_at": "2026-09-15T08:54:50Z",
+      "date": "2026-09",
+      "location": "Beijing",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "MySizePro",
+      "profile_url": "https://github.com/MySizePro",
+      "starred_at": "2026-09-15T09:39:59Z",
+      "date": "2026-09",
+      "location": "Puchong Batu Dua Belas, Selangor, Malaysia",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Qmeiyi",
+      "profile_url": "https://github.com/Qmeiyi",
+      "starred_at": "2026-09-15T11:39:57Z",
+      "date": "2026-09",
+      "location": "Beijing",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "k8ass",
+      "profile_url": "https://github.com/k8ass",
+      "starred_at": "2026-09-15T13:13:57Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "qdlopez",
+      "profile_url": "https://github.com/qdlopez",
+      "starred_at": "2026-09-15T16:16:55Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "shoesonly",
+      "profile_url": "https://github.com/shoesonly",
+      "starred_at": "2026-09-15T22:51:36Z",
+      "date": "2026-09",
+      "location": "Philadelphia, PA",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "zoujoe",
+      "profile_url": "https://github.com/zoujoe",
+      "starred_at": "2026-09-16T00:06:10Z",
+      "date": "2026-09",
+      "location": "Taichung City",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "3MIYABI",
+      "profile_url": "https://github.com/3MIYABI",
+      "starred_at": "2026-09-16T01:19:33Z",
+      "date": "2026-09",
+      "location": "Los Angeles, CA",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "fanshuaibo",
+      "profile_url": "https://github.com/fanshuaibo",
+      "starred_at": "2026-09-16T01:49:39Z",
+      "date": "2026-09",
+      "location": "Milwaukee, Wisconsin",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "OpenMLDB",
+      "profile_url": "https://github.com/OpenMLDB",
+      "starred_at": "2026-09-16T03:13:31Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "meticulu",
+      "profile_url": "https://github.com/meticulu",
+      "starred_at": "2026-09-16T04:16:59Z",
+      "date": "2026-09",
+      "location": "Boston, USA",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Remebots",
+      "profile_url": "https://github.com/Remebots",
+      "starred_at": "2026-09-16T04:21:56Z",
+      "date": "2026-09",
+      "location": "Kansas City, MO",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Radionom",
+      "profile_url": "https://github.com/Radionom",
+      "starred_at": "2026-09-16T04:39:29Z",
+      "date": "2026-09",
+      "location": "Japan",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "cockgame",
+      "profile_url": "https://github.com/cockgame",
+      "starred_at": "2026-09-16T08:29:04Z",
+      "date": "2026-09",
+      "location": "Nanchang",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "onlywiki",
+      "profile_url": "https://github.com/onlywiki",
+      "starred_at": "2026-09-16T13:51:44Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "honeyhotpot",
+      "profile_url": "https://github.com/honeyhotpot",
+      "starred_at": "2026-09-16T14:18:50Z",
+      "date": "2026-09",
+      "location": "Ho Chi Minh City, Vietnam",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Singaporeans",
+      "profile_url": "https://github.com/Singaporeans",
+      "starred_at": "2026-09-16T14:33:04Z",
+      "date": "2026-09",
+      "location": "Singapore",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "aokimisako",
+      "profile_url": "https://github.com/aokimisako",
+      "starred_at": "2026-09-16T15:23:30Z",
+      "date": "2026-09",
+      "location": "Ontario",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "caiyung",
+      "profile_url": "https://github.com/caiyung",
+      "starred_at": "2026-09-16T16:19:14Z",
+      "date": "2026-09",
+      "location": "United Arab Emirates",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "linkyui996",
+      "profile_url": "https://github.com/linkyui996",
+      "starred_at": "2026-09-16T20:22:39Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "SandyBeMe",
+      "profile_url": "https://github.com/SandyBeMe",
+      "starred_at": "2026-09-16T20:48:12Z",
+      "date": "2026-09",
+      "location": "Nantong",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "SoPull",
+      "profile_url": "https://github.com/SoPull",
+      "starred_at": "2026-09-16T23:49:14Z",
+      "date": "2026-09",
+      "location": "Hefei, Anhui",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "ibara2",
+      "profile_url": "https://github.com/ibara2",
+      "starred_at": "2026-09-17T00:36:43Z",
+      "date": "2026-09",
+      "location": "Japan",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "anyeduke11",
+      "profile_url": "https://github.com/anyeduke11",
+      "starred_at": "2026-09-17T01:26:43Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "dilemmama",
+      "profile_url": "https://github.com/dilemmama",
+      "starred_at": "2026-09-17T01:45:07Z",
+      "date": "2026-09",
+      "location": "Taiwan",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "sayouyou",
+      "profile_url": "https://github.com/sayouyou",
+      "starred_at": "2026-09-17T01:51:47Z",
+      "date": "2026-09",
+      "location": "NZ",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "xuman2019",
+      "profile_url": "https://github.com/xuman2019",
+      "starred_at": "2026-09-17T01:57:01Z",
+      "date": "2026-09",
+      "location": "Beijing",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "JoyMotion",
+      "profile_url": "https://github.com/JoyMotion",
+      "starred_at": "2026-09-17T02:09:34Z",
+      "date": "2026-09",
+      "location": ".Beijing",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "SkynetDrive",
+      "profile_url": "https://github.com/SkynetDrive",
+      "starred_at": "2026-09-17T03:21:52Z",
+      "date": "2026-09",
+      "location": "Spokane, WA",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "BerStand",
+      "profile_url": "https://github.com/BerStand",
+      "starred_at": "2026-09-17T03:28:39Z",
+      "date": "2026-09",
+      "location": "Bavaria",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "yxzh1992",
+      "profile_url": "https://github.com/yxzh1992",
+      "starred_at": "2026-09-17T05:55:13Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "qtw1998",
+      "profile_url": "https://github.com/qtw1998",
+      "starred_at": "2026-09-17T06:33:29Z",
+      "date": "2026-09",
+      "location": "University of Bristol, UK",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Jacksoka",
+      "profile_url": "https://github.com/Jacksoka",
+      "starred_at": "2026-09-17T06:44:26Z",
+      "date": "2026-09",
+      "location": "Perth, Australia",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Zyngam",
+      "profile_url": "https://github.com/Zyngam",
+      "starred_at": "2026-09-17T06:48:43Z",
+      "date": "2026-09",
+      "location": "China",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Metanoetik",
+      "profile_url": "https://github.com/Metanoetik",
+      "starred_at": "2026-09-17T08:15:04Z",
+      "date": "2026-09",
+      "location": "Singapore",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "yuner187",
+      "profile_url": "https://github.com/yuner187",
+      "starred_at": "2026-09-17T08:20:30Z",
+      "date": "2026-09",
+      "location": "Chengdu, China",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "WRATKING",
+      "profile_url": "https://github.com/WRATKING",
+      "starred_at": "2026-09-17T09:22:40Z",
+      "date": "2026-09",
+      "location": "Singapore",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Morlaix",
+      "profile_url": "https://github.com/Morlaix",
+      "starred_at": "2026-09-17T10:22:00Z",
+      "date": "2026-09",
+      "location": "San Jose, CA",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "qianyubtc",
+      "profile_url": "https://github.com/qianyubtc",
+      "starred_at": "2026-09-17T10:29:51Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "WowBeing",
+      "profile_url": "https://github.com/WowBeing",
+      "starred_at": "2026-09-17T11:36:51Z",
+      "date": "2026-09",
+      "location": "Chicago, Illinois",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "sunmica",
+      "profile_url": "https://github.com/sunmica",
+      "starred_at": "2026-09-17T11:53:42Z",
+      "date": "2026-09",
+      "location": "Macao",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "weavework",
+      "profile_url": "https://github.com/weavework",
+      "starred_at": "2026-09-17T15:41:49Z",
+      "date": "2026-09",
+      "location": "Miami, FL",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "sandyzhangjuan",
+      "profile_url": "https://github.com/sandyzhangjuan",
+      "starred_at": "2026-09-17T18:51:40Z",
+      "date": "2026-09",
+      "location": "Hangzhou",
+      "region": "china",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Crunchydate",
+      "profile_url": "https://github.com/Crunchydate",
+      "starred_at": "2026-09-17T19:36:10Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "Simplicity-Sprint",
+      "profile_url": "https://github.com/Simplicity-Sprint",
+      "starred_at": "2026-09-17T21:37:35Z",
+      "date": "2026-09",
+      "location": "Monterey Park, CA",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "ACHIJO",
+      "profile_url": "https://github.com/ACHIJO",
+      "starred_at": "2026-09-17T22:26:37Z",
+      "date": "2026-09",
+      "location": "",
+      "region": "unknown",
+      "reason": "未填写 location",
+      "profile_status": "ok"
+    },
+    {
+      "login": "mhy158",
+      "profile_url": "https://github.com/mhy158",
+      "starred_at": "2026-09-18T02:07:12Z",
+      "date": "2026-09",
+      "location": "Hawaii",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    },
+    {
+      "login": "lquery",
+      "profile_url": "https://github.com/lquery",
+      "starred_at": "2026-09-18T02:46:38Z",
+      "date": "2026-09",
+      "location": "Nagoya",
+      "region": "overseas",
+      "reason": "依据公开 location 的明确地名归类",
+      "profile_status": "ok"
+    }
+  ]
+};

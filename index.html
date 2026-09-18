@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f3f5f8" />
+    <title>Star Growth &amp; Actions Dashboard</title>
+    <link rel="stylesheet" href="./styles.css?v=20260918-compact" />
+    <link rel="stylesheet" href="./dataflex-theme.css?v=20260918" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="intro-grid" aria-labelledby="page-title">
+          <div class="intro-copy">
+            <p class="eyebrow">OpenDCAI/DataMind</p>
+            <h1 id="page-title">Star Growth &amp; Actions Dashboard</h1>
+            <p class="intro-text">
+              仓库概况、Star 日统计、提交、发布和贡献者列表均来自 GitHub 公开数据。
+            </p>
+          </div>
+          <aside class="intro-side intro-controls">
+            <nav class="top-actions" aria-label="数据状态与项目链接">
+              <span class="snapshot-status"><i></i><span id="dataStatus">连接 GitHub API…</span></span>
+              <a class="quiet-button" href="https://github.com/OpenDCAI/DataMind" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+              <button class="icon-button" id="refreshButton" type="button" aria-label="刷新看板数据" title="刷新看板数据">↻</button>
+            </nav>
+          </aside>
+      </header>
+
+      <main>
+        <section class="metric-grid" aria-label="项目概览指标">
+          <article class="metric-card metric-primary">
+            <div class="metric-topline"><span>GitHub Stars</span></div>
+            <strong id="metricStars">—</strong>
+            <p id="metricStarsNote">读取仓库公开数据</p>
+          </article>
+          <article class="metric-card">
+            <div class="metric-topline"><span>30 日新增</span></div>
+            <strong id="metricNewStars">—</strong>
+            <p id="metricNewStarsNote">最近 30 个日历日 · Star 日统计快照</p>
+          </article>
+          <article class="metric-card">
+            <div class="metric-topline"><span>Forks</span></div>
+            <strong id="metricForks">—</strong>
+            <p id="metricForksNote">读取仓库公开数据</p>
+          </article>
+          <article class="metric-card">
+            <div class="metric-topline"><span>开放 Issues</span></div>
+            <strong id="metricIssues">—</strong>
+            <p id="metricIssuesNote">读取仓库公开数据</p>
+          </article>
+          <article class="metric-card">
+            <div class="metric-topline"><span>最近发布</span></div>
+            <strong class="metric-date" id="metricRelease">—</strong>
+            <p id="metricReleaseNote">读取最新公开发布</p>
+            <div class="release-line"><i></i><span id="releaseStatus">GitHub 公开信息</span></div>
+          </article>
+        </section>
+
+        <section class="panel chart-panel" id="trend">
+          <div class="panel-heading">
+            <div>
+              <h2>每日新增趋势</h2>
+              <p>柱状为 GitHub Star History 的每日新增；红色标记仅对应用户提供的运营 action。</p>
+            </div>
+            <div class="panel-controls">
+              <div class="chart-legend" aria-label="图例">
+                <span><i class="legend-mark bar-mark"></i>日增</span>
+                <span><i class="legend-mark action-mark"></i>action</span>
+              </div>
+            </div>
+          </div>
+          <div class="chart-summary">
+            <strong id="trendSummary">等待 GitHub Star 时间戳</strong>
+            <span id="trendPeak">—</span>
+          </div>
+          <div class="chart-wrap" id="trendChart" aria-label="每日新增趋势图"></div>
+          <div class="traffic-snapshot-note">口径：GitHub <code>stargazers/history</code> 每日统计（UTC），补齐零新增日期；当日数据截至快照抓取时点，并非全天结果。</div>
+        </section>
+
+        <section class="panel" id="visitor-star">
+          <div class="panel-heading">
+            <div>
+              <h2>GitHub Traffic 趋势对照</h2>
+              <p>最近 14 天的 Clones、Unique cloners、Views 与 Unique visitors，以四条折线共用数值刻度对照。</p>
+            </div>
+            <span class="source-pill"><i></i>截图快照 · 08/31—09/13</span>
+          </div>
+          <div class="traffic-chart-grid" id="trafficDailyCharts"></div>
+          <details class="traffic-daily-details">
+            <summary><span>每日数据明细 <small>14 天 · 日期倒序</small></span><span class="traffic-details-toggle"><span class="when-closed">展开</span><span class="when-open">收起</span><i aria-hidden="true"></i></span></summary>
+            <div class="traffic-daily-table-scroll" role="region" aria-label="每日流量数据明细" tabindex="0">
+              <table class="traffic-daily-table">
+                <thead><tr><th scope="col">日期</th><th scope="col">Star / UV</th><th scope="col">独立访客</th><th scope="col">新增 stars</th><th scope="col">Views</th><th scope="col">Clones</th><th scope="col">独立 cloners</th></tr></thead>
+                <tbody id="trafficDailyTableBody"></tbody>
+              </table>
+            </div>
+            <p class="traffic-daily-table-note">Star / UV = 当日新增 Star ÷ 当日独立访客；仅为数量比值，不代表访客的实际转化率。暂无数据或 UV 为 0 时显示「—」。</p>
+          </details>
+          <div class="traffic-snapshot-note">来源：用户提供的 GitHub Traffic 截图。Unique visitors / unique cloners 为窗口去重值，不能将日值相加后当作总人数。</div>
+        </section>
+
+        <section class="panel" id="regions">
+          <div class="panel-heading">
+            <div>
+              <h2>9 月新增用户地区比例</h2>
+              <p>仅统计 2026 年 9 月加星（UTC）的当前 stargazer，按公开所在地展示人数与地区比例。</p>
+            </div>
+            <button class="inline-button" id="loadRegionsButton" type="button">读取公开 profile location</button>
+          </div>
+          <div class="region-grid" id="regionGrid"></div>
+          <details class="traffic-daily-details">
+            <summary><span>用户地区明细 <small>GitHub 原始 location</small></span><span class="traffic-details-toggle"><span class="when-closed">展开</span><span class="when-open">收起</span><i aria-hidden="true"></i></span></summary>
+            <div class="traffic-daily-table-scroll" role="region" aria-label="用户地区明细" tabindex="0"><table class="traffic-daily-table"><thead><tr><th scope="col">GitHub 用户</th><th scope="col">加星日期（UTC）</th><th scope="col">公开 location</th><th scope="col">地区分类</th></tr></thead><tbody id="regionDetailsBody"></tbody></table></div>
+          </details>
+          <div class="traffic-snapshot-note">来源：GitHub 公开 profile 与加星时间，全量分页抓取。按当前所在地归类，不推断国籍；本表中国地区含内地、香港、澳门、台湾。未填写、模糊地点及跨区域填写计为未知；取消 Star 的用户不在当前列表中。</div>
+          <div class="region-footer">
+            <div class="region-legend"><span><i class="legend-square china"></i>中国地区</span><span><i class="legend-square overseas"></i>海外地区</span><span><i class="legend-square unknown"></i>未知</span></div>
+            <span id="regionFooterNote">加载公开 profile location 后展示真实阶段分布</span>
+          </div>
+        </section>
+
+        <section class="panel" id="calendar">
+          <div class="panel-heading">
+            <div>
+              <h2>运营动作与日增日历</h2>
+              <p>按月对齐 UTC 日增、累计和用户提供的运营动作。点击标签打开对应链接。</p>
+            </div>
+            <div class="calendar-toolbar">
+              <button class="calendar-view-button" id="calendarToday" type="button" title="返回本月内容日历">内容日历</button>
+              <button class="icon-button" id="calendarPrev" type="button" aria-label="上一个月">←</button>
+              <strong id="calendarLabel">2026 年 9 月</strong>
+              <button class="icon-button" id="calendarNext" type="button" aria-label="下一个月">→</button>
+            </div>
+          </div>
+          <div class="calendar-wrap" id="actionCalendar"></div>
+        </section>
+
+        <section class="panel" id="traffic">
+          <div class="panel-heading">
+            <div>
+              <h2>GitHub Traffic 来源周报趋势</h2>
+              <p>同一份 GitHub Traffic 截图中的 Referring sites 与 Popular content 明细。</p>
+            </div>
+            <span class="source-pill"><i></i>截图快照 · 08/31—09/13</span>
+          </div>
+          <div class="traffic-tables" id="trafficTables"></div>
+          <div class="traffic-snapshot-note">来源站点和热门页面是截图时点的 GitHub Traffic 窗口聚合，不代表仓库完整历史。</div>
+        </section>
+
+        <section class="panel network-panel" id="network">
+          <div class="panel-heading">
+            <div>
+              <h2>共同关注网络：兴趣相关度与潜在场景</h2>
+              <p>分析 9 月新增 stargazer 还共同 star 了哪些项目，观察当前开发者兴趣结构与 DataMind 的潜在使用场景。</p>
+            </div>
+            <span class="period-pill">2026 年 9 月新增用户</span>
+          </div>
+          <div class="network-summary">
+            <div class="network-lead">
+              <div class="network-score"><strong id="networkScore">—</strong><span id="networkScoreSuffix">等待抓取</span></div>
+              <div>
+                <strong id="networkSummaryTitle">共同关注网络未加载</strong>
+                <p id="networkSummaryText">GitHub 不提供仓库级共同关注图谱；点击右侧按钮后，读取公开 starred repos 做可复核聚合。</p>
+              </div>
+            </div>
+            <div class="network-meta"><span id="networkMetaUsers">样本：—</span><span id="networkMetaSuccess">成功：—</span><span>每人最近 100 个公开收藏</span></div>
+          </div>
+          <div class="network-actions"><a class="inline-button" href="./data/network.json" download="datamind-september-interest-network.json">下载完整分析数据</a><span id="networkLoadNote">读取已保存的公开收藏快照</span></div>
+          <div class="insight-grid" id="networkInsights">
+            <article class="insight-card insight-blue"><span class="insight-index">01</span><strong>公开数据边界</strong><p>GitHub API 能读取仓库和公开用户行为，但不直接提供真实使用场景。</p></article>
+            <article class="insight-card insight-orange"><span class="insight-index">02</span><strong>相关度按共现计算</strong><p>只有同一批公开 stargazer 共同 star 的项目，才会进入相关度排序。</p></article>
+            <article class="insight-card insight-green"><span class="insight-index">03</span><strong>场景判断保留人工复核</strong><p>页面展示原始仓库描述、语言和 topics，不把推断包装成事实。</p></article>
+          </div>
+          <div class="network-body">
+            <div class="category-panel">
+              <div class="subsection-heading"><h3>兴趣分类分布</h3><span>覆盖用户数</span></div>
+              <div class="category-list" id="categoryList"></div>
+              <p class="network-category-note">按共同项目的名称与描述等规则归类；每类用户去重，不同类别可重叠。</p>
+            </div>
+            <div class="network-table-panel">
+              <div class="subsection-heading"><h3>Top 8 共同关注项目</h3><span>点击人数查看共同用户</span></div>
+              <div class="table-scroll">
+                <table>
+                  <thead><tr><th>项目</th><th>共同用户</th><th>占比</th><th>语言</th><th>Stars</th><th>分类 / 描述</th></tr></thead>
+                  <tbody id="networkTable"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <details class="traffic-daily-details"><summary><span>Top 30 共同关注项目</span><span class="traffic-details-toggle"><span class="when-closed">展开</span><span class="when-open">收起</span><i aria-hidden="true"></i></span></summary><div class="traffic-daily-table-scroll"><table class="traffic-daily-table"><thead><tr><th>项目</th><th>共同用户</th><th>占比</th><th>语言</th><th>Stars</th><th>分类 / 描述</th></tr></thead><tbody id="networkRankingBody"></tbody></table></div></details>
+          <p class="network-note">口径：样本为 2026 年 9 月加星的当前用户，每人读取最近 100 个公开收藏；排除 DataMind，按共同用户人数排序，同人数按项目名排序，占比以成功读取用户为分母。排名反映近期收藏共现，不代表完整历史或实际使用关系；潜在场景为待验证推断。完整下载数据包含全部至少 2 人共现的项目及共同用户。</p>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>DataMind Project Pulse</span>
+        <span>Designed for weekly repository review</span>
+      </footer>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./data/stars.js?v=20260918"></script>
+    <script src="./data/regions.js?v=20260918"></script>
+    <script src="./data/network.js?v=20260918"></script>
+    <script src="./app.js?v=20260918-no-coverage"></script>
+  </body>
+</html>
