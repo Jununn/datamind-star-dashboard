@@ -195,9 +195,8 @@ async function loadBaseData() {
     ? buildSnapshotTrend(state.starSnapshot)
     : buildHistoryTrend(state.starHistory);
   renderBase();
-  const failures = repoResult.filter(result => result.status === "rejected").length;
-  const updatedAt = state.starSnapshot?.fetched_at || (failures < repoResult.length ? new Date().toISOString() : null);
-  setDataStatus(updatedAt ? `最后更新：${formatDate(updatedAt, true)}` : "数据暂不可用", !updatedAt);
+  const updatedAt = state.starSnapshot?.fetched_at;
+  setDataStatus(updatedAt ? `最后更新：${formatDate(updatedAt, true)}` : "快照更新时间不可用", !updatedAt);
 }
 
 async function loadStarSnapshot() {
@@ -285,20 +284,20 @@ function renderBase() {
     .filter(point => new Date(`${point.date}T00:00:00`) >= thirtyDaysAgo)
     .reduce((sum, point) => sum + point.daily, 0);
 
-  if (repo) {
-    document.querySelector("#metricStars").textContent = formatNumber(repo.stargazers_count);
-    document.querySelector("#metricForks").textContent = formatNumber(repo.forks_count);
-    document.querySelector("#metricIssues").textContent = formatNumber(repo.open_issues_count);
-    document.querySelector("#metricStarsNote").textContent = `读取于 ${formatDate(new Date(), true)}`;
-    document.querySelector("#metricForksNote").textContent = `读取于 ${formatDate(new Date(), true)}`;
-    document.querySelector("#metricIssuesNote").textContent = `读取于 ${formatDate(new Date(), true)}`;
-  } else if (state.starSnapshot) {
+  if (state.starSnapshot) {
     document.querySelector("#metricStars").textContent = formatNumber(state.starSnapshot.stars);
     document.querySelector("#metricForks").textContent = formatNumber(state.starSnapshot.forks);
     document.querySelector("#metricIssues").textContent = formatNumber(state.starSnapshot.open_issues);
     document.querySelector("#metricStarsNote").textContent = `精确快照 · ${formatDate(state.starSnapshot.fetched_at, true)}`;
     document.querySelector("#metricForksNote").textContent = `精确快照 · ${formatDate(state.starSnapshot.fetched_at, true)}`;
-    document.querySelector("#metricIssuesNote").textContent = `精确快照 · ${formatDate(state.starSnapshot.fetched_at, true)}`;
+    document.querySelector("#metricIssuesNote").textContent = `仅 Issues · ${formatDate(state.starSnapshot.fetched_at, true)}`;
+  } else if (repo) {
+    document.querySelector("#metricStars").textContent = formatNumber(repo.stargazers_count);
+    document.querySelector("#metricForks").textContent = formatNumber(repo.forks_count);
+    document.querySelector("#metricIssues").textContent = formatNumber(repo.open_issues_count);
+    document.querySelector("#metricStarsNote").textContent = "GitHub API 实时数据";
+    document.querySelector("#metricForksNote").textContent = "GitHub API 实时数据";
+    document.querySelector("#metricIssuesNote").textContent = "含 Pull Requests";
   }
   document.querySelector("#metricNewStars").textContent = state.trend.length ? formatNumber(newStars) : "—";
   document.querySelector("#metricNewStarsNote").textContent = state.trend.length
