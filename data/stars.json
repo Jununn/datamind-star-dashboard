@@ -1,10 +1,10 @@
 {
   "repo": "OpenDCAI/DataMind",
-  "fetched_at": "2026-10-01T19:06:02.945Z",
+  "fetched_at": "2026-10-02T18:45:57.155Z",
   "source": "GitHub REST API stargazers/history daily counts",
   "source_url": "https://api.github.com/repos/OpenDCAI/DataMind/stargazers/history",
-  "stars": 290,
-  "forks": 41,
+  "stars": 310,
+  "forks": 44,
   "open_issues": 1,
   "scope": "GitHub Star History 每日统计；当日数据截至抓取时点",
   "timezone": "UTC",
@@ -755,7 +755,11 @@
     },
     {
       "date": "2026-10-01",
-      "count": 9
+      "count": 17
+    },
+    {
+      "date": "2026-10-02",
+      "count": 12
     }
   ]
 }
