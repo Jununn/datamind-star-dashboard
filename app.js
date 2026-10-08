@@ -1,6 +1,5 @@
 const REPO = "OpenDCAI/DataMind";
 const API_ROOT = "https://api.github.com";
-const BADGE_ROOT = "https://img.shields.io/github";
 const STAR_SNAPSHOT_URL = "./data/stars.json";
 const state = {
   repo: null,
@@ -9,11 +8,8 @@ const state = {
   networkSnapshot: window.DATAMIND_NETWORK_SNAPSHOT || null,
   starSnapshot: null,
   starHistory: [],
-  commits: [],
-  releases: [],
   contributors: [],
   trend: [],
-  releaseBadge: null,
   activeRange: "30",
   calendarDate: new Date()
 };
@@ -61,35 +57,61 @@ const promotionActions = [
     platform: "小红书",
     community: "",
     url: "https://www.xiaohongshu.com/explore/6aa770890000000025036b91?xsec_token=ABJyaheSp0xnh2lzvBbt-518ggKzFw6Ffy3GKtmmLlYQQ=&xsec_source=pc_user"
+  },
+  {
+    date: "2026-09-30",
+    project: "oss-datamind",
+    platform: "Reddit",
+    community: "r/codex",
+    url: "https://www.reddit.com/r/codex/comments/1wtyias/an_opensource_codex_plugin_for_five_agent_data/"
+  },
+  {
+    date: "2026-09-30",
+    project: "oss-datamind",
+    platform: "Reddit",
+    community: "r/ContextEngineering",
+    url: "https://www.reddit.com/r/ContextEngineering/comments/1wtyo2q/context_engineering_beyond_text_different_data/"
+  },
+  {
+    date: "2026-09-30",
+    project: "oss-datamind",
+    platform: "LinkedIn",
+    community: "群组 8659061",
+    url: "http://linkedin.com/groups/8659061/?highlightedUpdateUrn=urn%3Ali%3Aactivity%3A7506658565122760704&q=highlightedFeedForGroups"
   }
 ];
 
 const trafficSnapshot = {
-  startDate: "2026-08-31",
-  period: "08/31–09/13",
-  days: ["08/31", "09/01", "09/02", "09/03", "09/04", "09/05", "09/06", "09/07", "09/08", "09/09", "09/10", "09/11", "09/12", "09/13"],
+  startDate: "2026-09-23",
+  period: "09/23–10/06",
+  days: ["09/23", "09/24", "09/25", "09/26", "09/27", "09/28", "09/29", "09/30", "10/01", "10/02", "10/03", "10/04", "10/05", "10/06"],
   metrics: [
-    { key: "clones", title: "Clones", total: "317", values: [3, 9, 3, 3, 43, 20, 5, 4, 4, 3, 8, 44, 36, 132] },
-    { key: "unique-cloners", title: "Unique cloners", total: "136", values: [3, 4, 3, 3, 16, 10, 2, 2, 3, 2, 5, 17, 13, 63] },
-    { key: "views", title: "Views", total: "247", values: [11, 7, 13, 8, 28, 4, 2, 7, 16, 8, 14, 64, 36, 29] },
-    { key: "unique-visitors", title: "Unique visitors", total: "67", values: [5, 5, 8, 4, 13, 3, 2, 5, 7, 6, 4, 18, 4, 7] }
+    { key: "clones", title: "Clones", total: "199", values: [4, 5, 7, 12, 6, 11, 2, 22, 4, 7, 15, 12, 48, 44] },
+    { key: "unique-cloners", title: "Unique cloners", total: "79", values: [3, 4, 5, 8, 5, 10, 2, 11, 2, 5, 8, 8, 5, 9] },
+    { key: "views", title: "Views", total: "601", values: [85, 46, 35, 52, 49, 56, 42, 69, 42, 42, 48, 8, 17, 10] },
+    { key: "unique-visitors", title: "Unique visitors", total: "66", values: [16, 8, 4, 9, 4, 10, 8, 22, 8, 7, 10, 4, 7, 5] }
   ],
   referringSites: [
-    ["github.com", 81, 23],
-    ["Google", 15, 4],
-    ["zwt233.github.io", 7, 6]
+    ["github.com", 35, 17],
+    ["linkedin.com", 6, 4],
+    ["reddit.com", 4, 4],
+    ["Google", 4, 2],
+    ["zwt233.github.io", 3, 2],
+    ["haolpku.github.io", 3, 1],
+    ["com.linkedin.android", 2, 1],
+    ["Bing", 1, 1]
   ],
   popularContent: [
-    ["Overview", 116, 55],
-    ["/tree/main", 35, 8],
-    ["/blob/main/README_zh.md", 18, 12],
-    ["/tree/codex/migrate-codex-plugin", 9, 3],
-    ["/compare/main...jjk9090:DataMind", 6, 1],
-    ["/issues", 5, 3],
-    ["/blob/main/LICENSE", 4, 4],
-    ["/pull/3", 4, 1],
-    ["/actions/workflows/python-ci.yml", 3, 3],
-    ["/blob/main/assets/inference-time", 3, 3]
+    ["Overview", 104, 54],
+    ["/pulls", 39, 5],
+    ["/issues", 20, 8],
+    ["/issues/created_by/closing_ref...", 16, 2],
+    ["/blob/main/README_zh.md", 12, 6],
+    ["/blob/main/LICENSE", 9, 2],
+    ["/pull/17", 7, 3],
+    ["/pull/23", 7, 3],
+    ["/commits/main", 7, 2],
+    ["/pull/24", 6, 3]
   ]
 };
 
@@ -155,48 +177,27 @@ async function githubFetch(path, options = {}) {
   return response.json();
 }
 
-async function badgeValue(path) {
-  const response = await fetch(`${BADGE_ROOT}/${path}.json`, { cache: "no-store" });
-  if (!response.ok) throw new Error(`Badge request failed: ${response.status}`);
-  const payload = await response.json();
-  return payload.value;
-}
-
 async function loadBaseData() {
   setDataStatus("读取 GitHub 公开数据…");
-  const badges = await Promise.allSettled([
-    badgeValue(`stars/${REPO}`),
-    badgeValue(`forks/${REPO}`),
-    badgeValue(`issues/${REPO}`),
-    badgeValue(`v/release/${REPO}`)
-  ]);
-  const badgeValues = badges.map(result => result.status === "fulfilled" ? result.value : null);
-  renderBadgeFallbacks(badgeValues);
-  state.releaseBadge = badgeValues[3];
-
   const repoResult = await Promise.allSettled([
     githubFetch(`/repos/${REPO}`),
     loadStarHistory(),
     loadStarSnapshot(),
-    githubFetch(`/repos/${REPO}/commits?per_page=100`),
-    githubFetch(`/repos/${REPO}/releases?per_page=30`),
-    githubFetch(`/repos/${REPO}/contributors?per_page=100`),
-    githubFetch(`/repos/${REPO}/tags?per_page=10`)
+    githubFetch(`/repos/${REPO}/contributors?per_page=100`)
   ]);
-  const [repoResultItem, historyResult, snapshotResult, commitsResult, releasesResult, contributorsResult, tagsResult] = repoResult;
-  state.repo = repoResultItem.status === "fulfilled" ? { ...repoResultItem.value, tags: tagsResult.status === "fulfilled" ? tagsResult.value : [] } : null;
+  const [repoResultItem, historyResult, snapshotResult, contributorsResult] = repoResult;
+  state.repo = repoResultItem.status === "fulfilled" ? repoResultItem.value : null;
   state.starHistory = historyResult.status === "fulfilled" ? historyResult.value : [];
   state.starSnapshot = snapshotResult.status === "fulfilled" ? snapshotResult.value : null;
   state.stargazers = [];
-  state.commits = commitsResult.status === "fulfilled" ? commitsResult.value : [];
-  state.releases = releasesResult.status === "fulfilled" ? releasesResult.value : [];
   state.contributors = contributorsResult.status === "fulfilled" ? contributorsResult.value : [];
   state.trend = state.starSnapshot?.daily?.length
     ? buildSnapshotTrend(state.starSnapshot)
     : buildHistoryTrend(state.starHistory);
   renderBase();
-  const updatedAt = state.starSnapshot?.fetched_at;
-  setDataStatus(updatedAt ? `最后更新：${formatDate(updatedAt, true)}` : "快照更新时间不可用", !updatedAt);
+  const failures = repoResult.filter(result => result.status === "rejected").length;
+  const updatedAt = state.starSnapshot?.fetched_at || (failures < repoResult.length ? new Date().toISOString() : null);
+  setDataStatus(updatedAt ? `最后更新：${formatDate(updatedAt, true)}` : "数据暂不可用", !updatedAt);
 }
 
 async function loadStarSnapshot() {
@@ -235,17 +236,6 @@ function buildSnapshotTrend(snapshot) {
     });
 }
 
-function renderBadgeFallbacks([stars, forks, issues, release]) {
-  if (stars) document.querySelector("#metricStars").textContent = stars;
-  if (forks) document.querySelector("#metricForks").textContent = forks;
-  if (issues) document.querySelector("#metricIssues").textContent = issues;
-  if (release) document.querySelector("#metricRelease").textContent = release;
-  document.querySelector("#metricStarsNote").textContent = stars ? "Shields.io → GitHub 公开数据" : "等待 GitHub 数据";
-  document.querySelector("#metricForksNote").textContent = forks ? "Shields.io → GitHub 公开数据" : "等待 GitHub 数据";
-  document.querySelector("#metricIssuesNote").textContent = issues ? "Shields.io → GitHub 公开数据" : "等待 GitHub 数据";
-  document.querySelector("#metricReleaseNote").textContent = release ? "Shields.io → GitHub 公开数据" : "等待 GitHub 数据";
-}
-
 function buildHistoryTrend(history) {
   if (!history.length) return [];
   const weeks = [...history].sort((a, b) => Number(a.week) - Number(b.week));
@@ -274,44 +264,35 @@ function buildHistoryTrend(history) {
 
 function renderBase() {
   const repo = state.repo;
-  const latestRelease = state.releases[0];
-  const latestTag = repo?.tags?.[0]?.name;
-  const latestCommit = state.commits[0];
-  const thirtyDaysAgo = new Date();
-  thirtyDaysAgo.setHours(0, 0, 0, 0);
-  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 29);
-  const newStars = state.trend
-    .filter(point => new Date(`${point.date}T00:00:00`) >= thirtyDaysAgo)
-    .reduce((sum, point) => sum + point.daily, 0);
 
-  if (state.starSnapshot) {
-    document.querySelector("#metricStars").textContent = formatNumber(state.starSnapshot.stars);
-    document.querySelector("#metricForks").textContent = formatNumber(state.starSnapshot.forks);
-    document.querySelector("#metricIssues").textContent = formatNumber(state.starSnapshot.open_issues);
-    document.querySelector("#metricStarsNote").textContent = `精确快照 · ${formatDate(state.starSnapshot.fetched_at, true)}`;
-    document.querySelector("#metricForksNote").textContent = `精确快照 · ${formatDate(state.starSnapshot.fetched_at, true)}`;
-    document.querySelector("#metricIssuesNote").textContent = `仅 Issues · ${formatDate(state.starSnapshot.fetched_at, true)}`;
-  } else if (repo) {
+  if (repo) {
     document.querySelector("#metricStars").textContent = formatNumber(repo.stargazers_count);
-    document.querySelector("#metricForks").textContent = formatNumber(repo.forks_count);
-    document.querySelector("#metricIssues").textContent = formatNumber(repo.open_issues_count);
-    document.querySelector("#metricStarsNote").textContent = "GitHub API 实时数据";
-    document.querySelector("#metricForksNote").textContent = "GitHub API 实时数据";
-    document.querySelector("#metricIssuesNote").textContent = "含 Pull Requests";
+    document.querySelector("#metricStarsNote").textContent = `读取于 ${formatDate(new Date(), true)}`;
+  } else if (state.starSnapshot) {
+    document.querySelector("#metricStars").textContent = formatNumber(state.starSnapshot.stars);
+    document.querySelector("#metricStarsNote").textContent = `精确快照 · ${formatDate(state.starSnapshot.fetched_at, true)}`;
   }
-  document.querySelector("#metricNewStars").textContent = state.trend.length ? formatNumber(newStars) : "—";
-  document.querySelector("#metricNewStarsNote").textContent = state.trend.length
-    ? `最近 30 个日历日 · ${state.starSnapshot ? "Star 日统计快照" : "Star History"}`
-    : "Star 时间序列受 GitHub API 限制";
-  if (latestRelease?.tag_name || latestTag) {
-    document.querySelector("#metricRelease").textContent = latestRelease?.tag_name || latestTag;
-  } else if (!state.releaseBadge) {
-    document.querySelector("#metricRelease").textContent = "—";
-  }
-  document.querySelector("#metricReleaseNote").textContent = latestRelease
-    ? `发布于 ${formatDate(latestRelease.published_at || latestRelease.created_at)}`
-    : latestCommit ? `最新提交 ${formatDate(latestCommit.commit?.author?.date || latestCommit.commit?.committer?.date)}` : state.releaseBadge ? "Shields.io → GitHub 公开数据" : "暂无公开 release / tag";
-  document.querySelector("#releaseStatus").textContent = latestRelease ? "GitHub 公开 release" : latestTag ? "GitHub 公开 tag" : "暂无公开 release / tag";
+  const todayParts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Shanghai",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(new Date());
+  const dateParts = Object.fromEntries(todayParts.map(part => [part.type, part.value]));
+  const today = `${dateParts.year}-${dateParts.month}-${dateParts.day}`;
+  const month = today.slice(0, 7);
+  const completedDays = (state.starSnapshot?.daily || []).filter(point => point.date.startsWith(`${month}-`) && point.date < today);
+  const monthStars = completedDays.reduce((sum, point) => sum + point.count, 0);
+  document.querySelector("#metricOctoberAverageLabel").textContent = `${Number(dateParts.month)}月日均新增 Star`;
+  document.querySelector("#metricOctoberAverage").textContent = completedDays.length
+    ? (monthStars / completedDays.length).toFixed(1)
+    : "—";
+  document.querySelector("#metricOctoberAverageNote").textContent = completedDays.length
+    ? `截至 ${Number(completedDays.at(-1).date.slice(5, 7))}/${Number(completedDays.at(-1).date.slice(8, 10))} · ${formatNumber(monthStars)} Stars / ${completedDays.length} 天`
+    : "等待完整日 Star 数据";
+  document.querySelector("#metricOctoberAverageSource").textContent = state.starSnapshot
+    ? `数据更新于 ${formatDate(state.starSnapshot.fetched_at, true)}`
+    : "GitHub Star 日统计";
   document.querySelector("#trendSummary").textContent = state.trend.length
     ? state.starSnapshot
       ? `已加载 ${state.trend.length} 个日历日 · 快照截至 ${formatDate(state.starSnapshot.fetched_at, true)}`
@@ -570,7 +551,139 @@ const reviewedLocations = {
   "hangzhou": "china",
   "monterey park, ca": "overseas",
   "hawaii": "overseas",
-  "nagoya": "overseas"
+  "nagoya": "overseas",
+  "osaka": "overseas",
+  "california": "overseas",
+  "guangzhou": "china",
+  "hebei, china": "china",
+  "shanghai, china": "china",
+  "asia/tokyo": "overseas",
+  "athens, greece": "overseas",
+  "bangkok, thailand": "overseas",
+  "bismarck, nd": "overseas",
+  "bogotá, colombia": "overseas",
+  "brisbane, au": "overseas",
+  "buffalo, ny": "overseas",
+  "canada": "overseas",
+  "canberra": "overseas",
+  "chengdu": "china",
+  "copenhagen, denmark": "overseas",
+  "cupertino": "overseas",
+  "detroit, mi": "overseas",
+  "dubai, uae": "overseas",
+  "france": "overseas",
+  "fuji mount": "overseas",
+  "garfield heights, oh": "overseas",
+  "gauteng, south africa": "overseas",
+  "hefei, china": "china",
+  "huizhou,guangdong,china": "china",
+  "kalihi, hawaii": "overseas",
+  "kuala lumpur": "overseas",
+  "linden, germany": "overseas",
+  "lisbon, portugal": "overseas",
+  "los angeles, california": "overseas",
+  "madison": "overseas",
+  "madrid, spain": "overseas",
+  "malaysia": "overseas",
+  "milan, italy": "overseas",
+  "minneapolis, minnesota": "overseas",
+  "mountain view, california": "overseas",
+  "mumbai, india": "overseas",
+  "new delhi, india": "overseas",
+  "nippon": "overseas",
+  "paris": "overseas",
+  "phoenix, az": "overseas",
+  "piscataway, nj 08854 usa": "overseas",
+  "pittsburgh, pa": "overseas",
+  "pittsburgh, pa, usa": "overseas",
+  "san diego, ca": "overseas",
+  "seattle, washington": "overseas",
+  "seoul, kr": "overseas",
+  "seoul, south korea": "overseas",
+  "shenyang": "china",
+  "south korea": "overseas",
+  "stare opole, pologne": "overseas",
+  "sunnyvale, california": "overseas",
+  "suzhou": "china",
+  "tajikistan": "overseas",
+  "tasmania": "overseas",
+  "thai": "overseas",
+  "thailand": "overseas",
+  "toronto, canada": "overseas",
+  "union city, ca": "overseas",
+  "united states": "overseas",
+  "uzbekistan": "overseas",
+  "vietnam": "overseas",
+  "wenzhou, zhejiang province": "china",
+  "west us": "overseas",
+  "xi'an, china": "china",
+  "xiamen, china": "china",
+  "xiamen, fujian, china": "china",
+  "yeouido, korea": "overseas",
+  "yizhuang, beijing": "china",
+  "zurich, switzerland": "overseas",
+  "上海": "china",
+  "巴斯克": "overseas",
+  "東京都": "overseas",
+  "usa": "overseas",
+  "auckland, new zealand": "overseas",
+  "austin, texas": "overseas",
+  "kuala lumpur, malaysia": "overseas",
+  "kyoto": "overseas",
+  "san francisco, california": "overseas",
+  "seattle, wa": "overseas",
+  "abuja, nigeria": "overseas",
+  "anchorage, ak": "overseas",
+  "ankara": "overseas",
+  "austin": "overseas",
+  "bangalore, india": "overseas",
+  "beijing, china.": "china",
+  "bishkek, kyrgyzstan": "overseas",
+  "blacksburg, va, usa": "overseas",
+  "boston, ma": "overseas",
+  "cavan, ireland": "overseas",
+  "china, guangxi": "china",
+  "denver, co": "overseas",
+  "fukuoka, japan": "overseas",
+  "geneva, switzerland": "overseas",
+  "germany": "overseas",
+  "half moon bay": "overseas",
+  "hamilton, ontario": "overseas",
+  "hangzhou, zhejiang": "china",
+  "henan, china": "china",
+  "hi, usa": "overseas",
+  "hollywood, ca": "overseas",
+  "jinan, shandong": "china",
+  "kangerlussuaq": "overseas",
+  "krakow, poland": "overseas",
+  "louisville, co": "overseas",
+  "madison, wi": "overseas",
+  "manhattan": "overseas",
+  "palo alto, ca": "overseas",
+  "perth": "overseas",
+  "phoenix": "overseas",
+  "plano, texas, united states": "overseas",
+  "riyadh, saudi arabia": "overseas",
+  "sakyo ward": "overseas",
+  "san diego, california": "overseas",
+  "san francisco, ca": "overseas",
+  "scotland": "overseas",
+  "sibu, my": "overseas",
+  "sofia, bulgaria": "overseas",
+  "sydney, australia": "overseas",
+  "taipei": "china",
+  "taipei, taiwan": "china",
+  "taiwan, taipei city": "china",
+  "tokyo, jp": "overseas",
+  "vancouver, canada": "overseas",
+  "wuhan, china": "china",
+  "xiamen, fujian": "china",
+  "york, uk": "overseas",
+  "yunnan": "china",
+  "zhangzhou, fujian": "china",
+  "北京·海淀": "china",
+  "福岡⇔高円寺": "overseas",
+  "usa, earth": "overseas"
 };
 
 function classifyLocation(location) {
@@ -624,7 +737,7 @@ async function loadRegions() {
 }
 
 function renderRegions(records) {
-  records = records.filter(record => record.date === "2026-09");
+  records = records.filter(record => ["2026-09", "2026-10"].includes(record.date));
   const grouped = new Map();
   records.forEach(record => {
     const key = record.date || "unknown";
@@ -642,9 +755,8 @@ function renderRegions(records) {
       <div class="region-meta"><span>中国 <b>${china} 人 · ${(china / total * 100).toFixed(1)}%</b></span><span>海外 <b>${overseas} 人 · ${(overseas / total * 100).toFixed(1)}%</b></span><span>未知 <b>${unknown} 人 · ${(unknown / total * 100).toFixed(1)}%</b></span></div>
       <div class="region-meta" style="margin-top: 10px"><span>Locations</span><span>${escapeHtml(locations)}</span></div></article>`;
   }).join("");
-  const total = records.length || 1;
-  const overseas = records.filter(item => (item.region || classifyLocation(item.location)) === "overseas").length;
-  document.querySelector("#regionFooterNote").textContent = `9 月新增 ${records.length} 个 profile · 海外 ${(overseas / total * 100).toFixed(1)}% · 更新于 ${formatDate(state.regionSnapshot?.fetched_at, true)}`;
+  const monthSummaries = [...grouped.entries()].map(([period, items]) => `${period.slice(5, 7)} 月 ${items.length} 人`);
+  document.querySelector("#regionFooterNote").textContent = `${monthSummaries.join(" · ")} · 更新于 ${formatDate(state.regionSnapshot?.fetched_at, true)}`;
   document.querySelector("#loadRegionsButton").textContent = "重新读取公开 profile location";
   const labels = { china: "中国地区", overseas: "海外地区", unknown: "未知" };
   document.querySelector("#regionDetailsBody").innerHTML = [...records].sort((a, b) => String(b.starred_at).localeCompare(String(a.starred_at))).map(record => `<tr><td><a href="https://github.com/${encodeURIComponent(record.login)}" target="_blank" rel="noopener noreferrer">${escapeHtml(record.login)}</a></td><td>${escapeHtml((record.starred_at || "").slice(0, 10))}</td><td>${escapeHtml(record.location || "未填写")}</td><td>${labels[record.region || classifyLocation(record.location)]}</td></tr>`).join("");
@@ -774,7 +886,7 @@ loadBaseData().catch(error => {
   setDataStatus(error.message, true);
   document.querySelector("#trendSummary").textContent = "无法读取 GitHub 公开数据";
   document.querySelector("#trendPeak").textContent = "—";
-  document.querySelector("#trendChart").innerHTML = `<div class="empty-state"><strong>${escapeHtml(error.message)}</strong><span>顶部指标已尝试从 Shields.io 读取；请稍后刷新。</span></div>`;
+  document.querySelector("#trendChart").innerHTML = `<div class="empty-state"><strong>${escapeHtml(error.message)}</strong><span>顶部指标会使用本地 Star 快照；请稍后刷新。</span></div>`;
   if (state.regionSnapshot?.records?.length) renderRegions(state.regionSnapshot.records);
   else renderRegionsEmpty("等待 GitHub 公开 profile 数据");
   if (state.networkSnapshot) renderNetwork(state.networkSnapshot);

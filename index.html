@@ -38,25 +38,10 @@
             <p id="metricStarsNote">读取仓库公开数据</p>
           </article>
           <article class="metric-card">
-            <div class="metric-topline"><span>30 日新增</span></div>
-            <strong id="metricNewStars">—</strong>
-            <p id="metricNewStarsNote">最近 30 个日历日 · Star 日统计快照</p>
-          </article>
-          <article class="metric-card">
-            <div class="metric-topline"><span>Forks</span></div>
-            <strong id="metricForks">—</strong>
-            <p id="metricForksNote">读取仓库公开数据</p>
-          </article>
-          <article class="metric-card">
-            <div class="metric-topline"><span>开放 Issues</span></div>
-            <strong id="metricIssues">—</strong>
-            <p id="metricIssuesNote">读取仓库公开数据</p>
-          </article>
-          <article class="metric-card">
-            <div class="metric-topline"><span>最近发布</span></div>
-            <strong class="metric-date" id="metricRelease">—</strong>
-            <p id="metricReleaseNote">读取最新公开发布</p>
-            <div class="release-line"><i></i><span id="releaseStatus">GitHub 公开信息</span></div>
+            <div class="metric-topline"><span id="metricOctoberAverageLabel">10月日均新增 Star</span></div>
+            <strong id="metricOctoberAverage">—</strong>
+            <p id="metricOctoberAverageNote">读取 GitHub Star 日统计</p>
+            <div class="metric-source-line"><i></i><span id="metricOctoberAverageSource">GitHub Star 日统计</span></div>
           </article>
         </section>
 
@@ -87,7 +72,7 @@
               <h2>GitHub Traffic 趋势对照</h2>
               <p>最近 14 天的 Clones、Unique cloners、Views 与 Unique visitors，以四条折线共用数值刻度对照。</p>
             </div>
-            <span class="source-pill"><i></i>截图快照 · 08/31—09/13</span>
+            <span class="source-pill"><i></i>截图快照 · 09/23—10/06</span>
           </div>
           <div class="traffic-chart-grid" id="trafficDailyCharts"></div>
           <details class="traffic-daily-details">
@@ -106,8 +91,8 @@
         <section class="panel" id="regions">
           <div class="panel-heading">
             <div>
-              <h2>9 月新增用户地区比例</h2>
-              <p>仅统计 2026 年 9 月加星（UTC）的当前 stargazer，按公开所在地展示人数与地区比例。</p>
+              <h2>用户地区分布</h2>
+              <p>按加星月份展示 9 月与 10 月至今仍保留 Star 的用户公开所在地分布。</p>
             </div>
             <button class="inline-button" id="loadRegionsButton" type="button">读取公开 profile location</button>
           </div>
@@ -119,7 +104,7 @@
           <div class="traffic-snapshot-note">来源：GitHub 公开 profile 与加星时间，全量分页抓取。按当前所在地归类，不推断国籍；本表中国地区含内地、香港、澳门、台湾。未填写、模糊地点及跨区域填写计为未知；取消 Star 的用户不在当前列表中。</div>
           <div class="region-footer">
             <div class="region-legend"><span><i class="legend-square china"></i>中国地区</span><span><i class="legend-square overseas"></i>海外地区</span><span><i class="legend-square unknown"></i>未知</span></div>
-            <span id="regionFooterNote">加载公开 profile location 后展示真实阶段分布</span>
+            <span id="regionFooterNote">读取 9 月及 10 月用户地区快照</span>
           </div>
         </section>
 
@@ -145,7 +130,7 @@
               <h2>GitHub Traffic 来源周报趋势</h2>
               <p>同一份 GitHub Traffic 截图中的 Referring sites 与 Popular content 明细。</p>
             </div>
-            <span class="source-pill"><i></i>截图快照 · 08/31—09/13</span>
+            <span class="source-pill"><i></i>截图快照 · 09/23—10/06</span>
           </div>
           <div class="traffic-tables" id="trafficTables"></div>
           <div class="traffic-snapshot-note">来源站点和热门页面是截图时点的 GitHub Traffic 窗口聚合，不代表仓库完整历史。</div>
@@ -202,9 +187,9 @@
       </footer>
     </div>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    <script src="./data/stars.js?v=202610071937"></script>
-    <script src="./data/regions.js?v=20260918"></script>
-    <script src="./data/network.js?v=20260918"></script>
-    <script src="./app.js?v=20260920-scheduled-refresh"></script>
+    <script src="./data/stars.js?v=20261008"></script>
+    <script src="./data/regions.js?v=20261008-monthly"></script>
+    <script src="./data/network.js?v=20261008"></script>
+    <script src="./app.js?v=20261008-traffic-1006"></script>
   </body>
 </html>

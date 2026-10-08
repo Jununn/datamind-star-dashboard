@@ -252,7 +252,7 @@ main > section {
 
 .metric-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 13px;
 }
 
@@ -279,7 +279,7 @@ main > section {
 
 .metric-topline,
 .metric-card p,
-.release-line {
+.metric-source-line {
   color: var(--muted);
 }
 
@@ -299,10 +299,6 @@ main > section {
   font-size: 34px;
   font-weight: 780;
   line-height: 1;
-}
-
-.metric-card > strong.metric-date {
-  font-size: 31px;
 }
 
 .metric-card p {
@@ -353,7 +349,7 @@ main > section {
 .spark-green { color: var(--green); }
 .spark-slate { color: #8a97aa; }
 
-.release-line {
+.metric-source-line {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -361,7 +357,7 @@ main > section {
   font-size: 11px;
 }
 
-.release-line i {
+.metric-source-line i {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -1787,11 +1783,7 @@ td:first-child {
   }
 
   .metric-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .metric-card:last-child {
-    grid-column: span 3;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .intro-grid,
@@ -1838,10 +1830,6 @@ td:first-child {
 
   .metric-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .metric-card:last-child {
-    grid-column: span 2;
   }
 
   .panel-heading {
