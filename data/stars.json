@@ -1,6 +1,6 @@
 {
   "repo": "OpenDCAI/DataMind",
-  "fetched_at": "2026-10-12T21:54:00.237Z",
+  "fetched_at": "2026-10-13T19:58:23.574Z",
   "source": "GitHub REST API stargazers/history daily counts",
   "source_url": "https://api.github.com/repos/OpenDCAI/DataMind/stargazers/history",
   "stars": 452,
@@ -800,6 +800,10 @@
     {
       "date": "2026-10-12",
       "count": 1
+    },
+    {
+      "date": "2026-10-13",
+      "count": 0
     }
   ]
 }
