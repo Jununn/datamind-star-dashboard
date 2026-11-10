@@ -17,6 +17,48 @@ const state = {
 // Operations actions are user-provided only; never infer or import them from GitHub activity.
 const promotionActions = [
   {
+    "date": "2026-10-22",
+    "project": "datamind-oss",
+    "platform": "Reddit",
+    "community": "r/AgentsOfAI",
+    "url": "https://www.reddit.com/r/AgentsOfAI/comments/1xcf8dl/as_agents_need_to_access_increasingly_diverse/"
+  },
+  {
+    "date": "2026-10-16",
+    "project": "datamind",
+    "platform": "Reddit",
+    "community": "r/AI_Agents",
+    "url": "https://www.reddit.com/r/AI_Agents/comments/1x7cpeo/retrieval_agents_need_to_handle_multiple_data/"
+  },
+  {
+    "date": "2026-10-15",
+    "project": "datamind - 插件",
+    "platform": "Reddit",
+    "community": "r/codex",
+    "url": "https://www.reddit.com/r/codex/comments/1x6i5q7/a_new_context_plugin_for_codex_store_and_retrieve/"
+  },
+  {
+    "date": "2026-10-09",
+    "project": "Context Window",
+    "platform": "Reddit",
+    "community": "r/ChatGPTCoding",
+    "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1x1gavk/coding_agents_need_typed_context_surfaces_not_one/"
+  },
+  {
+    "date": "2026-10-08",
+    "project": "Context Window",
+    "platform": "Reddit",
+    "community": "r/AIcodingProfessionals",
+    "url": "https://www.reddit.com/r/AIcodingProfessionals/comments/1x0nork/coding_agents_need_typed_context_surfaces_not_one/"
+  },
+  {
+    "date": "2026-10-08",
+    "project": "Context Window",
+    "platform": "Reddit",
+    "community": "r/ContextEngineering",
+    "url": "https://www.reddit.com/r/ContextEngineering/comments/1x0nonu/coding_agents_need_typed_context_surfaces_not_one/"
+  },
+  {
     date: "2026-09-16",
     project: "datamind-oss",
     platform: "Reddit",
