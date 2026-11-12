@@ -123,217 +123,23 @@ const promotionActions = [
   }
 ];
 
-const trafficSnapshot = {
-  "startDate": "2026-10-28",
-  "period": "10/28–11/10",
-  "daily_precision": "estimated_from_screenshot",
-  "days": [
-    "10/28",
-    "10/29",
-    "10/30",
-    "10/31",
-    "11/01",
-    "11/02",
-    "11/03",
-    "11/04",
-    "11/05",
-    "11/06",
-    "11/07",
-    "11/08",
-    "11/09",
-    "11/10"
-  ],
-  "metrics": [
-    {
-      "key": "clones",
-      "title": "Clones",
-      "total": "267",
-      "values": [
-        19,
-        24,
-        50,
-        17,
-        7,
-        16,
-        19,
-        56,
-        17,
-        20,
-        2,
-        2,
-        6,
-        13
-      ]
-    },
-    {
-      "key": "unique-cloners",
-      "title": "Unique cloners",
-      "total": "118",
-      "values": [
-        8,
-        9,
-        18,
-        7,
-        5,
-        12,
-        12,
-        9,
-        12,
-        15,
-        2,
-        2,
-        7,
-        10
-      ]
-    },
-    {
-      "key": "views",
-      "title": "Views",
-      "total": "381",
-      "values": [
-        26,
-        46,
-        10,
-        52,
-        58,
-        18,
-        43,
-        35,
-        19,
-        17,
-        3,
-        12,
-        21,
-        21
-      ]
-    },
-    {
-      "key": "unique-visitors",
-      "title": "Unique visitors",
-      "total": "80",
-      "values": [
-        11,
-        20,
-        5,
-        5,
-        9,
-        8,
-        7,
-        7,
-        13,
-        10,
-        2,
-        8,
-        9,
-        11
-      ]
-    }
-  ],
-  "referringSites": [
-    [
-      "github.com",
-      57,
-      20
-    ],
-    [
-      "aocr.org",
-      8,
-      8
-    ],
-    [
-      "Google",
-      6,
-      5
-    ],
-    [
-      "zwt233.github.io",
-      4,
-      3
-    ],
-    [
-      "com.reddit.frontpage",
-      4,
-      2
-    ],
-    [
-      "Bing",
-      2,
-      2
-    ],
-    [
-      "opendcai.github.io",
-      2,
-      1
-    ],
-    [
-      "Baidu",
-      1,
-      1
-    ],
-    [
-      "haolpku.github.io",
-      1,
-      1
-    ],
-    [
-      "wchy4qa9krto.feishu.cn",
-      1,
-      1
-    ]
-  ],
-  "popularContent": [
-    [
-      "Overview",
-      132,
-      71
-    ],
-    [
-      "/pulls",
-      77,
-      10
-    ],
-    [
-      "/issues",
-      19,
-      8
-    ],
-    [
-      "/blob/main/README_zh.md",
-      13,
-      9
-    ],
-    [
-      "/pull/35",
-      9,
-      2
-    ],
-    [
-      "/tree/research",
-      9,
-      2
-    ],
-    [
-      "/pull/36",
-      8,
-      2
-    ],
-    [
-      "/tree/main",
-      7,
-      3
-    ],
-    [
-      "/pull/37",
-      6,
-      2
-    ],
-    [
-      "/pull/38",
-      4,
-      3
-    ]
-  ]
-};
+const trafficSnapshots = window.DATAMIND_TRAFFIC_SNAPSHOTS;
+const trafficSnapshot = mergeTrafficSnapshots(trafficSnapshots);
+
+function mergeTrafficSnapshots(snapshots) {
+  const records = new Map();
+  for (const snapshot of snapshots) {
+    snapshot.days.forEach((_, index) => {
+      const date = new Date(new Date(snapshot.startDate + 'T00:00:00Z').getTime() + index * 86400000).toISOString().slice(0, 10);
+      if (!records.has(date)) records.set(date, Object.fromEntries(snapshot.metrics.map(metric => [metric.key, metric.values[index]])));
+    });
+  }
+  const knownDates = [...records.keys()].sort();
+  const dates = [];
+  for (let day = new Date(knownDates[0] + 'T00:00:00Z'); day <= new Date(knownDates.at(-1) + 'T00:00:00Z'); day.setUTCDate(day.getUTCDate() + 1)) dates.push(day.toISOString().slice(0, 10));
+  const latest = snapshots.at(-1);
+  return { ...latest, startDate: dates[0], dates, days: dates.map(date => date.slice(5).replace('-', '/')), metrics: latest.metrics.map(metric => ({ ...metric, values: dates.map(date => records.get(date)?.[metric.key] ?? null) })) };
+}
 
 let toastTimer;
 
@@ -532,29 +338,29 @@ function renderTrafficSnapshot() {
   const metrics = trafficSnapshot.metrics.map((metric, index) => ({ ...metric, color: colors[index] }));
   document.querySelector("#trafficDailyCharts").innerHTML = `
     <article class="traffic-chart-card">
-      <div class="traffic-combined-legend" aria-label="指标与 14 日汇总">${metrics.map(metric => `
-        <span class="traffic-series-key" style="--series-color: ${metric.color}"><i aria-hidden="true"></i><span>${escapeHtml(metric.title)}</span><strong>${escapeHtml(metric.total)}</strong></span>`).join("")}</div>
+      <div class="traffic-combined-legend" aria-label="指标与最新快照汇总">${metrics.map(metric => `
+        <span class="traffic-series-key" style="--series-color: ${metric.color}"><i aria-hidden="true"></i><span>${escapeHtml(metric.title)}</span><strong>${escapeHtml(metric.total) + " · 最新14日"}</strong></span>`).join("")}</div>
       <div class="traffic-chart-canvas" id="traffic-combined"></div>
     </article>`;
   renderTrafficLineChart(document.querySelector("#traffic-combined"), metrics);
   renderTrafficDetails();
-  const renderTable = (title, headers, rows) => `
+  const renderTable = (title, headers, rows, period) => `
     <div class="traffic-table-card">
-      <div class="subsection-heading"><h3>${title}</h3><span>last 14 days</span></div>
+      <div class="subsection-heading"><h3>${title}</h3><span>${escapeHtml(period)}</span></div>
       <div class="table-scroll"><table><thead><tr>${headers.map(header => `<th>${header}</th>`).join("")}</tr></thead><tbody>${rows.map(row => `<tr>${row.map((cell, index) => `<td class="${index === 0 ? "traffic-name" : ""}">${escapeHtml(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
     </div>`;
-  document.querySelector("#trafficTables").innerHTML = [
-    renderTable("Referring sites", ["Site", "Views", "Unique Visitors"], trafficSnapshot.referringSites),
-    renderTable("Popular content", ["Content", "Views", "Unique Visitors"], trafficSnapshot.popularContent)
-  ].join("");
+  document.querySelector("#trafficTables").innerHTML = trafficSnapshots.slice().reverse().map(snapshot => [
+    renderTable("Referring sites", ["Site", "Views", "Unique Visitors"], snapshot.referringSites, snapshot.period),
+    renderTable("Popular content", ["Content", "Views", "Unique Visitors"], snapshot.popularContent, snapshot.period)
+  ].join("")).join("");
 }
 
 function renderTrafficDetails() {
   const metrics = new Map(trafficSnapshot.metrics.map(metric => [metric.key, metric.values]));
   const starsByDate = new Map(state.trend.map(point => [point.date, point.daily]));
-  const start = new Date(`${trafficSnapshot.startDate}T00:00:00Z`);
+
   const rows = trafficSnapshot.days.map((_, index) => {
-    const date = new Date(start.getTime() + index * 86400000).toISOString().slice(0, 10);
+    const date = trafficSnapshot.dates[index];
     const visitors = metrics.get("unique-visitors")[index];
     const stars = starsByDate.get(date);
     const ratio = Number.isFinite(stars) && visitors > 0 ? `${(stars / visitors * 100).toFixed(1)}%` : "—";
@@ -582,18 +388,24 @@ function renderTrafficLineChart(target, metrics) {
     return `<line class="traffic-grid-line" x1="${left}" x2="${width - right}" y1="${lineY}" y2="${lineY}"></line><text class="traffic-axis-label" x="${left - 8}" y="${lineY + 3}" text-anchor="end">${Math.round(maxValue * ratio)}</text>`;
   }).join("");
   const series = metrics.map(metric => {
-    const line = metric.values.map((value, index) => `${x(index).toFixed(1)},${y(value).toFixed(1)}`).join(" ");
-    const points = metric.values.map((value, index) => `<circle class="traffic-point-mark" cx="${x(index)}" cy="${y(value)}" r="3.5"></circle>`).join("");
-    return `<g style="color: ${metric.color}" data-series="${metric.key}"><polyline class="traffic-line-mark" points="${line}"><title>${escapeHtml(metric.title)}</title></polyline>${points}</g>`;
+    const segments = [];
+    let segment = [];
+    metric.values.forEach((value, index) => {
+      if (value === null) { if (segment.length) segments.push(segment.join(" ")); segment = []; }
+      else segment.push(x(index).toFixed(1) + ',' + y(value).toFixed(1));
+    });
+    if (segment.length) segments.push(segment.join(" "));
+    const points = metric.values.map((value, index) => value === null ? "" : `<circle class="traffic-point-mark" cx="${x(index)}" cy="${y(value)}" r="3.5"></circle>`).join("");
+    return `<g style="color: ${metric.color}" data-series="${metric.key}">${segments.map(line => `<polyline class="traffic-line-mark" points="${line}"><title>${escapeHtml(metric.title)}</title></polyline>`).join("")}${points}</g>`;
   }).join("");
-  const labels = trafficSnapshot.days.map((day, index) => `<text class="traffic-axis-label" x="${x(index)}" y="${height - 12}" text-anchor="middle">${day}</text>`).join("");
+  const labels = trafficSnapshot.days.map((day, index) => index % Math.max(1, Math.ceil(trafficSnapshot.days.length / 14)) !== 0 && index !== trafficSnapshot.days.length - 1 ? "" : `<text class="traffic-axis-label" x="${x(index)}" y="${height - 12}" text-anchor="middle">${day}</text>`).join("");
   const hitAreas = trafficSnapshot.days.map((day, index) => {
     const start = Math.max(left - 8, x(index) - step / 2);
     const end = Math.min(width - right + 8, x(index) + step / 2);
-    const summary = `${day}，${metrics.map(metric => `${metric.title}: ${metric.values[index]}`).join('，')}`;
+    const summary = `${day}，${metrics.map(metric => `${metric.title}: ${formatNumber(metric.values[index])}`).join('，')}`;
     return `<rect class="traffic-date-hit" data-traffic-index="${index}" x="${start}" y="${top - 8}" width="${end - start}" height="${plotHeight + 16}" tabindex="0" aria-label="${escapeHtml(summary)}"></rect>`;
   }).join("");
-  target.innerHTML = `<svg viewBox="0 0 ${width} ${height}" role="group" aria-label="Clones、Unique cloners、Views、Unique visitors 最近 14 天趋势，共用数值刻度">${grid}${series}${labels}<line class="traffic-hover-guide" y1="${top}" y2="${top + plotHeight}" visibility="hidden"></line>${hitAreas}</svg><div class="traffic-tooltip" role="tooltip" hidden></div>`;
+  target.innerHTML = `<svg viewBox="0 0 ${width} ${height}" role="group" aria-label="Clones、Unique cloners、Views、Unique visitors 完整历史趋势，缺失日期断线，共用数值刻度">${grid}${series}${labels}<line class="traffic-hover-guide" y1="${top}" y2="${top + plotHeight}" visibility="hidden"></line>${hitAreas}</svg><div class="traffic-tooltip" role="tooltip" hidden></div>`;
   const tooltip = target.querySelector(".traffic-tooltip");
   const guide = target.querySelector(".traffic-hover-guide");
   const hideTooltip = () => {

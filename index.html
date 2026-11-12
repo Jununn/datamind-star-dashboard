@@ -70,13 +70,13 @@
           <div class="panel-heading">
             <div>
               <h2>GitHub Traffic 趋势对照</h2>
-              <p>最近 14 天的 Clones、Unique cloners、Views 与 Unique visitors，以四条折线共用数值刻度对照。</p>
+              <p>保留全部已记录日期的 Clones、Unique cloners、Views 与 Unique visitors，以四条折线共用数值刻度对照。</p>
             </div>
-            <span class="source-pill"><i></i>截图快照 · 10/28—11/10</span>
+            <span class="source-pill"><i></i>历史快照 · 08/31—11/10</span>
           </div>
           <div class="traffic-chart-grid" id="trafficDailyCharts"></div>
           <details class="traffic-daily-details">
-            <summary><span>每日数据明细 <small>14 天 · 估读值 · 日期倒序</small></span><span class="traffic-details-toggle"><span class="when-closed">展开</span><span class="when-open">收起</span><i aria-hidden="true"></i></span></summary>
+            <summary><span>每日数据明细 <small>完整历史 · 日期倒序</small></span><span class="traffic-details-toggle"><span class="when-closed">展开</span><span class="when-open">收起</span><i aria-hidden="true"></i></span></summary>
             <div class="traffic-daily-table-scroll" role="region" aria-label="每日流量数据明细" tabindex="0">
               <table class="traffic-daily-table">
                 <thead><tr><th scope="col">日期</th><th scope="col">Star / UV</th><th scope="col">独立访客</th><th scope="col">新增 stars</th><th scope="col">Views</th><th scope="col">Clones</th><th scope="col">独立 cloners</th></tr></thead>
@@ -85,7 +85,7 @@
             </div>
             <p class="traffic-daily-table-note">Star / UV = 当日新增 Star ÷ 当日独立访客；仅为数量比值，不代表访客的实际转化率。暂无数据或 UV 为 0 时显示「—」。</p>
           </details>
-          <div class="traffic-snapshot-note">来源：用户提供的 GitHub Traffic 截图（2026/10/28—11/10）。汇总与来源表按截图录入；每日折线数值由图形估读，存在误差，日值合计可能与截图汇总不同。Unique visitors / unique cloners 为窗口去重值，不能将日值相加后当作总人数。</div>
+          <div class="traffic-snapshot-note">来源：历次 GitHub Traffic 截图。旧日期保留，新日期追加；未提供的日期断线显示，不记为零。图例汇总仅对应最新 14 日窗口。汇总与来源表按截图录入；每日折线数值由图形估读，存在误差，日值合计可能与截图汇总不同。Unique visitors / unique cloners 为窗口去重值，不能将日值相加后当作总人数。</div>
         </section>
 
         <section class="panel" id="regions">
@@ -130,7 +130,7 @@
               <h2>GitHub Traffic 来源周报趋势</h2>
               <p>同一份 GitHub Traffic 截图中的 Referring sites 与 Popular content 明细。</p>
             </div>
-            <span class="source-pill"><i></i>截图快照 · 09/23—10/06</span>
+            <span class="source-pill"><i></i>全部历史快照</span>
           </div>
           <div class="traffic-tables" id="trafficTables"></div>
           <div class="traffic-snapshot-note">来源站点和热门页面是截图时点的 GitHub Traffic 窗口聚合，不代表仓库完整历史。</div>
@@ -190,6 +190,7 @@
     <script src="./data/stars.js?v=20261112-merged-history"></script>
     <script src="./data/regions.js?v=20261008-monthly"></script>
     <script src="./data/network.js?v=20261008"></script>
-    <script src="./app.js?v=20261112-traffic"></script>
+    <script src="./data/traffic-history.js?v=20261112"></script>
+    <script src="./app.js?v=20261112-traffic-history"></script>
   </body>
 </html>

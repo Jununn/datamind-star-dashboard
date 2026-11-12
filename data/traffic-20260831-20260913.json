@@ -1,0 +1,175 @@
+{
+  "startDate": "2026-08-31",
+  "period": "08/31–09/13",
+  "days": [
+    "08/31",
+    "09/01",
+    "09/02",
+    "09/03",
+    "09/04",
+    "09/05",
+    "09/06",
+    "09/07",
+    "09/08",
+    "09/09",
+    "09/10",
+    "09/11",
+    "09/12",
+    "09/13"
+  ],
+  "metrics": [
+    {
+      "key": "clones",
+      "title": "Clones",
+      "total": "317",
+      "values": [
+        3,
+        9,
+        3,
+        3,
+        43,
+        20,
+        5,
+        4,
+        4,
+        3,
+        8,
+        44,
+        36,
+        132
+      ]
+    },
+    {
+      "key": "unique-cloners",
+      "title": "Unique cloners",
+      "total": "136",
+      "values": [
+        3,
+        4,
+        3,
+        3,
+        16,
+        10,
+        2,
+        2,
+        3,
+        2,
+        5,
+        17,
+        13,
+        63
+      ]
+    },
+    {
+      "key": "views",
+      "title": "Views",
+      "total": "247",
+      "values": [
+        11,
+        7,
+        13,
+        8,
+        28,
+        4,
+        2,
+        7,
+        16,
+        8,
+        14,
+        64,
+        36,
+        29
+      ]
+    },
+    {
+      "key": "unique-visitors",
+      "title": "Unique visitors",
+      "total": "67",
+      "values": [
+        5,
+        5,
+        8,
+        4,
+        13,
+        3,
+        2,
+        5,
+        7,
+        6,
+        4,
+        18,
+        4,
+        7
+      ]
+    }
+  ],
+  "referringSites": [
+    [
+      "github.com",
+      81,
+      23
+    ],
+    [
+      "Google",
+      15,
+      4
+    ],
+    [
+      "zwt233.github.io",
+      7,
+      6
+    ]
+  ],
+  "popularContent": [
+    [
+      "Overview",
+      116,
+      55
+    ],
+    [
+      "/tree/main",
+      35,
+      8
+    ],
+    [
+      "/blob/main/README_zh.md",
+      18,
+      12
+    ],
+    [
+      "/tree/codex/migrate-codex-plugin",
+      9,
+      3
+    ],
+    [
+      "/compare/main...jjk9090:DataMind",
+      6,
+      1
+    ],
+    [
+      "/issues",
+      5,
+      3
+    ],
+    [
+      "/blob/main/LICENSE",
+      4,
+      4
+    ],
+    [
+      "/pull/3",
+      4,
+      1
+    ],
+    [
+      "/actions/workflows/python-ci.yml",
+      3,
+      3
+    ],
+    [
+      "/blob/main/assets/inference-time",
+      3,
+      3
+    ]
+  ]
+}
