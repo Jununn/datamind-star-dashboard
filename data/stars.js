@@ -1,70 +1,16 @@
 window.DATAMIND_STAR_SNAPSHOT = {
   "repo": "OpenDCAI/DataMind",
-  "fetched_at": "2026-10-31T17:59:44.304Z",
+  "fetched_at": "2026-11-12T03:48:31.177Z",
   "source": "GitHub REST API stargazers/history daily counts",
   "source_url": "https://api.github.com/repos/OpenDCAI/DataMind/stargazers/history",
-  "stars": 456,
-  "forks": 59,
+  "stars": 455,
+  "history_total": 454,
+  "history_difference": 1,
+  "forks": 60,
   "open_issues": 1,
   "scope": "GitHub Star History 每日统计；当日数据截至抓取时点",
   "timezone": "UTC",
   "daily": [
-    {
-      "date": "2026-04-05",
-      "count": 0
-    },
-    {
-      "date": "2026-04-06",
-      "count": 0
-    },
-    {
-      "date": "2026-04-07",
-      "count": 1
-    },
-    {
-      "date": "2026-04-08",
-      "count": 0
-    },
-    {
-      "date": "2026-04-09",
-      "count": 0
-    },
-    {
-      "date": "2026-04-10",
-      "count": 0
-    },
-    {
-      "date": "2026-04-11",
-      "count": 0
-    },
-    {
-      "date": "2026-04-12",
-      "count": 0
-    },
-    {
-      "date": "2026-04-13",
-      "count": 0
-    },
-    {
-      "date": "2026-04-14",
-      "count": 0
-    },
-    {
-      "date": "2026-04-15",
-      "count": 0
-    },
-    {
-      "date": "2026-04-16",
-      "count": 0
-    },
-    {
-      "date": "2026-04-17",
-      "count": 0
-    },
-    {
-      "date": "2026-04-18",
-      "count": 0
-    },
     {
       "date": "2026-04-19",
       "count": 0
@@ -431,7 +377,7 @@ window.DATAMIND_STAR_SNAPSHOT = {
     },
     {
       "date": "2026-07-19",
-      "count": 1
+      "count": 0
     },
     {
       "date": "2026-07-20",
@@ -659,7 +605,7 @@ window.DATAMIND_STAR_SNAPSHOT = {
     },
     {
       "date": "2026-09-14",
-      "count": 39
+      "count": 38
     },
     {
       "date": "2026-09-15",
@@ -847,6 +793,54 @@ window.DATAMIND_STAR_SNAPSHOT = {
     },
     {
       "date": "2026-10-31",
+      "count": 0
+    },
+    {
+      "date": "2026-11-01",
+      "count": 0
+    },
+    {
+      "date": "2026-11-02",
+      "count": 0
+    },
+    {
+      "date": "2026-11-03",
+      "count": 0
+    },
+    {
+      "date": "2026-11-04",
+      "count": 0
+    },
+    {
+      "date": "2026-11-05",
+      "count": 0
+    },
+    {
+      "date": "2026-11-06",
+      "count": 0
+    },
+    {
+      "date": "2026-11-07",
+      "count": 0
+    },
+    {
+      "date": "2026-11-08",
+      "count": 0
+    },
+    {
+      "date": "2026-11-09",
+      "count": 0
+    },
+    {
+      "date": "2026-11-10",
+      "count": 0
+    },
+    {
+      "date": "2026-11-11",
+      "count": 1
+    },
+    {
+      "date": "2026-11-12",
       "count": 0
     }
   ]
