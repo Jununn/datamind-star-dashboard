@@ -1,4 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { pathToFileURL } from "node:url";
 
 const REPO = "OpenDCAI/DataMind";
 const API_ROOT = "https://api.github.com";
@@ -52,17 +53,26 @@ function dailyHistory(weeks, throughDate) {
   return daily;
 }
 
-async function buildSnapshot() {
-  const fetchedAt = new Date();
-  const [repo, weeks, openItems] = await Promise.all([
+export async function buildSnapshot({ pause = ms => new Promise(resolve => setTimeout(resolve, ms)) } = {}) {
+  let [repo, weeks, openItems] = await Promise.all([
     github(`/repos/${REPO}`),
     allPages(`/repos/${REPO}/stargazers/history`),
     allPages(`/repos/${REPO}/issues?state=open`)
   ]);
-  const daily = dailyHistory(weeks, fetchedAt.toISOString().slice(0, 10));
-  const total = daily.reduce((sum, point) => sum + point.count, 0);
+  let fetchedAt, daily, total;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    fetchedAt = new Date();
+    daily = dailyHistory(weeks, fetchedAt.toISOString().slice(0, 10));
+    total = daily.reduce((sum, point) => sum + point.count, 0);
+    if (total === repo.stargazers_count || attempt === 2) break;
+    await pause(5000);
+    [repo, weeks] = await Promise.all([
+      github(`/repos/${REPO}`),
+      allPages(`/repos/${REPO}/stargazers/history`)
+    ]);
+  }
   if (total !== repo.stargazers_count) {
-    throw new Error(`Star History total ${total} does not match repository total ${repo.stargazers_count}`);
+    console.warn(`Star History total ${total} differs from repository total ${repo.stargazers_count} after 3 reads; preserving both values without altering daily counts.`);
   }
 
   return {
@@ -71,6 +81,8 @@ async function buildSnapshot() {
     source: "GitHub REST API stargazers/history daily counts",
     source_url: `${API_ROOT}/repos/${REPO}/stargazers/history`,
     stars: repo.stargazers_count,
+    history_total: total,
+    history_difference: repo.stargazers_count - total,
     forks: repo.forks_count,
     open_issues: openItems.filter(item => !item.pull_request).length,
     scope: "GitHub Star History 每日统计；当日数据截至抓取时点",
@@ -79,6 +91,7 @@ async function buildSnapshot() {
   };
 }
 
+async function main() {
 const snapshot = await buildSnapshot();
 const serialized = JSON.stringify(snapshot, null, 2);
 await writeFile("data/stars.json", `${serialized}\n`);
@@ -98,3 +111,8 @@ console.log(JSON.stringify({
   open_issues: snapshot.open_issues,
   latest: snapshot.daily.slice(-7)
 }, null, 2));
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  await main();
+}
