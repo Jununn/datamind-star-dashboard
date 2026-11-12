@@ -1,0 +1,200 @@
+{
+  "startDate": "2026-09-23",
+  "period": "09/23–10/06",
+  "days": [
+    "09/23",
+    "09/24",
+    "09/25",
+    "09/26",
+    "09/27",
+    "09/28",
+    "09/29",
+    "09/30",
+    "10/01",
+    "10/02",
+    "10/03",
+    "10/04",
+    "10/05",
+    "10/06"
+  ],
+  "metrics": [
+    {
+      "key": "clones",
+      "title": "Clones",
+      "total": "199",
+      "values": [
+        4,
+        5,
+        7,
+        12,
+        6,
+        11,
+        2,
+        22,
+        4,
+        7,
+        15,
+        12,
+        48,
+        44
+      ]
+    },
+    {
+      "key": "unique-cloners",
+      "title": "Unique cloners",
+      "total": "79",
+      "values": [
+        3,
+        4,
+        5,
+        8,
+        5,
+        10,
+        2,
+        11,
+        2,
+        5,
+        8,
+        8,
+        5,
+        9
+      ]
+    },
+    {
+      "key": "views",
+      "title": "Views",
+      "total": "601",
+      "values": [
+        85,
+        46,
+        35,
+        52,
+        49,
+        56,
+        42,
+        69,
+        42,
+        42,
+        48,
+        8,
+        17,
+        10
+      ]
+    },
+    {
+      "key": "unique-visitors",
+      "title": "Unique visitors",
+      "total": "66",
+      "values": [
+        16,
+        8,
+        4,
+        9,
+        4,
+        10,
+        8,
+        22,
+        8,
+        7,
+        10,
+        4,
+        7,
+        5
+      ]
+    }
+  ],
+  "referringSites": [
+    [
+      "github.com",
+      35,
+      17
+    ],
+    [
+      "linkedin.com",
+      6,
+      4
+    ],
+    [
+      "reddit.com",
+      4,
+      4
+    ],
+    [
+      "Google",
+      4,
+      2
+    ],
+    [
+      "zwt233.github.io",
+      3,
+      2
+    ],
+    [
+      "haolpku.github.io",
+      3,
+      1
+    ],
+    [
+      "com.linkedin.android",
+      2,
+      1
+    ],
+    [
+      "Bing",
+      1,
+      1
+    ]
+  ],
+  "popularContent": [
+    [
+      "Overview",
+      104,
+      54
+    ],
+    [
+      "/pulls",
+      39,
+      5
+    ],
+    [
+      "/issues",
+      20,
+      8
+    ],
+    [
+      "/issues/created_by/closing_ref...",
+      16,
+      2
+    ],
+    [
+      "/blob/main/README_zh.md",
+      12,
+      6
+    ],
+    [
+      "/blob/main/LICENSE",
+      9,
+      2
+    ],
+    [
+      "/pull/17",
+      7,
+      3
+    ],
+    [
+      "/pull/23",
+      7,
+      3
+    ],
+    [
+      "/commits/main",
+      7,
+      2
+    ],
+    [
+      "/pull/24",
+      6,
+      3
+    ]
+  ]
+}
