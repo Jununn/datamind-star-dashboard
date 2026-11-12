@@ -1,6 +1,25 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildSnapshot } from './update-stars.mjs';
+import { buildSnapshot, preserveHistory } from './update-stars.mjs';
+
+test('keeps completed dates, only increases the partial day, and appends dates', () => {
+  const previous = { fetched_at: '2026-11-11T14:00:00Z', daily: [
+    { date: '2026-11-09', count: 8 },
+    { date: '2026-11-10', count: 4 },
+    { date: '2026-11-11', count: 2 }
+  ] };
+  const incoming = [
+    { date: '2026-11-10', count: 9 },
+    { date: '2026-11-11', count: 1 },
+    { date: '2026-11-12', count: 3 }
+  ];
+  const expected = [...previous.daily, incoming[2]];
+  assert.deepEqual(preserveHistory(previous, incoming), expected);
+  assert.deepEqual(preserveHistory(previous, [...incoming, { date: '2026-11-11', count: 5 }])[2],
+    { date: '2026-11-11', count: 5 });
+  assert.deepEqual(preserveHistory({ ...previous, daily: expected }, incoming), expected);
+  assert.equal(previous.daily.length, 3, 'does not mutate the stored snapshot');
+});
 
 test('snapshot handles inconsistent API totals without inventing daily stars', async t => {
   const original = globalThis.fetch;

@@ -8,9 +8,93 @@ window.DATAMIND_STAR_SNAPSHOT = {
   "history_difference": 1,
   "forks": 60,
   "open_issues": 1,
-  "scope": "GitHub Star History 每日统计；当日数据截至抓取时点",
+  "scope": "历史日增保留已记录值；新日期追加，上次抓取当日仅补增；日增累计可能与当前 Star 总数不同",
   "timezone": "UTC",
   "daily": [
+    {
+      "date": "2026-03-29",
+      "count": 0
+    },
+    {
+      "date": "2026-03-30",
+      "count": 0
+    },
+    {
+      "date": "2026-03-31",
+      "count": 0
+    },
+    {
+      "date": "2026-04-01",
+      "count": 0
+    },
+    {
+      "date": "2026-04-02",
+      "count": 0
+    },
+    {
+      "date": "2026-04-03",
+      "count": 0
+    },
+    {
+      "date": "2026-04-04",
+      "count": 0
+    },
+    {
+      "date": "2026-04-05",
+      "count": 0
+    },
+    {
+      "date": "2026-04-06",
+      "count": 0
+    },
+    {
+      "date": "2026-04-07",
+      "count": 1
+    },
+    {
+      "date": "2026-04-08",
+      "count": 0
+    },
+    {
+      "date": "2026-04-09",
+      "count": 0
+    },
+    {
+      "date": "2026-04-10",
+      "count": 0
+    },
+    {
+      "date": "2026-04-11",
+      "count": 0
+    },
+    {
+      "date": "2026-04-12",
+      "count": 0
+    },
+    {
+      "date": "2026-04-13",
+      "count": 0
+    },
+    {
+      "date": "2026-04-14",
+      "count": 0
+    },
+    {
+      "date": "2026-04-15",
+      "count": 0
+    },
+    {
+      "date": "2026-04-16",
+      "count": 0
+    },
+    {
+      "date": "2026-04-17",
+      "count": 0
+    },
+    {
+      "date": "2026-04-18",
+      "count": 0
+    },
     {
       "date": "2026-04-19",
       "count": 0
@@ -377,7 +461,7 @@ window.DATAMIND_STAR_SNAPSHOT = {
     },
     {
       "date": "2026-07-19",
-      "count": 0
+      "count": 1
     },
     {
       "date": "2026-07-20",
@@ -605,7 +689,7 @@ window.DATAMIND_STAR_SNAPSHOT = {
     },
     {
       "date": "2026-09-14",
-      "count": 38
+      "count": 40
     },
     {
       "date": "2026-09-15",

@@ -53,7 +53,20 @@ function dailyHistory(weeks, throughDate) {
   return daily;
 }
 
-export async function buildSnapshot({ pause = ms => new Promise(resolve => setTimeout(resolve, ms)) } = {}) {
+export function preserveHistory(previous, incoming) {
+  const points = new Map(incoming.map(point => [point.date, { ...point }]));
+  const partialDate = previous?.fetched_at?.slice(0, 10);
+  for (const point of previous?.daily || []) {
+    const fresh = points.get(point.date);
+    points.set(point.date, {
+      date: point.date,
+      count: point.date === partialDate ? Math.max(point.count, fresh?.count || 0) : point.count
+    });
+  }
+  return [...points.values()].sort((a, b) => a.date.localeCompare(b.date));
+}
+
+export async function buildSnapshot({ previous = null, pause = ms => new Promise(resolve => setTimeout(resolve, ms)) } = {}) {
   let [repo, weeks, openItems] = await Promise.all([
     github(`/repos/${REPO}`),
     allPages(`/repos/${REPO}/stargazers/history`),
@@ -85,14 +98,15 @@ export async function buildSnapshot({ pause = ms => new Promise(resolve => setTi
     history_difference: repo.stargazers_count - total,
     forks: repo.forks_count,
     open_issues: openItems.filter(item => !item.pull_request).length,
-    scope: "GitHub Star History 每日统计；当日数据截至抓取时点",
+    scope: "历史日增保留已记录值；新日期追加，上次抓取当日仅补增；日增累计可能与当前 Star 总数不同",
     timezone: "UTC",
-    daily
+    daily: preserveHistory(previous, daily)
   };
 }
 
 async function main() {
-const snapshot = await buildSnapshot();
+const previous = JSON.parse(await readFile("data/stars.json", "utf8"));
+const snapshot = await buildSnapshot({ previous });
 const serialized = JSON.stringify(snapshot, null, 2);
 await writeFile("data/stars.json", `${serialized}\n`);
 await writeFile("data/stars.js", `window.DATAMIND_STAR_SNAPSHOT = ${serialized};\n`);

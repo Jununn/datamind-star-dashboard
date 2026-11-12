@@ -26,6 +26,9 @@ jobs:
         with:
           node-version: 22
 
+      - name: Test history preservation
+        run: node --test scripts/update-stars.test.mjs
+
       - name: Fetch latest DataMind metrics
         run: node scripts/update-stars.mjs
         env:

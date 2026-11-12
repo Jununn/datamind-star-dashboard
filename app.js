@@ -10,7 +10,7 @@ const state = {
   starHistory: [],
   contributors: [],
   trend: [],
-  activeRange: "30",
+  activeRange: "all",
   calendarDate: new Date()
 };
 
@@ -488,7 +488,7 @@ function renderTrendChart() {
     return `<rect class="chart-bar${weekend ? " chart-bar-weekend" : ""}" x="${x(index) - barWidth / 2}" y="${y}" width="${barWidth}" height="${top + plotHeight - y}" data-index="${index}"><title>${point.date} · ${point.daily} 新增 Star</title></rect>`;
   }).join("");
   const labels = data.map((point, index) => {
-    const every = data.length > 45 ? 7 : data.length > 20 ? 3 : 1;
+    const every = Math.max(1, Math.ceil(data.length / 14));
     if (index % every !== 0 && index !== data.length - 1) return "";
     return `<text class="chart-axis-label" x="${x(index)}" y="${height - 15}" text-anchor="middle">${point.label}</text>`;
   }).join("");
