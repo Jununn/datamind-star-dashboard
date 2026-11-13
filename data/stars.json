@@ -1,10 +1,10 @@
 {
   "repo": "OpenDCAI/DataMind",
-  "fetched_at": "2026-11-12T21:11:30.588Z",
+  "fetched_at": "2026-11-13T20:41:00.563Z",
   "source": "GitHub REST API stargazers/history daily counts",
   "source_url": "https://api.github.com/repos/OpenDCAI/DataMind/stargazers/history",
-  "stars": 455,
-  "history_total": 454,
+  "stars": 456,
+  "history_total": 455,
   "history_difference": 1,
   "forks": 60,
   "open_issues": 1,
@@ -925,6 +925,10 @@
     },
     {
       "date": "2026-11-12",
+      "count": 0
+    },
+    {
+      "date": "2026-11-13",
       "count": 0
     }
   ]
