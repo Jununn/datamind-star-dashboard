@@ -1,0 +1,21 @@
+        <section class="panel" id="accessGate" aria-labelledby="accessTitle">
+          <h2 id="accessTitle">解锁更多内容</h2>
+          <p>后续内容已加密，输入口令后解锁。</p>
+          <form id="accessForm">
+            <label for="accessPassword">访问口令</label>
+            <input id="accessPassword" type="password" autocomplete="current-password" required aria-describedby="accessError" />
+            <label><input id="rememberUnlock" type="checkbox" /> 记住此浏览器的解锁状态</label>
+            <button class="inline-button" type="submit">解锁</button>
+          </form>
+          <p id="accessError" role="status" aria-live="polite"></p>
+        </section>
+      </main>
+      <footer class="footer"><span>DataMind Project Pulse</span><span>Designed for weekly repository review</span></footer>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./data/stars.js"></script>
+    <script src="./encrypted/dashboard.js"></script>
+    <script src="./public.js"></script>
+    <script src="./access-gate.js"></script>
+  </body>
+</html>

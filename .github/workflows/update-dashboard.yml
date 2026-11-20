@@ -1,6 +1,8 @@
-name: Update dashboard data
+name: Update and deploy encrypted dashboard
 
 on:
+  push:
+    branches: [main]
   schedule:
     # 22:00 Asia/Shanghai (UTC+8)
     - cron: "0 14 * * *"
@@ -8,37 +10,70 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: datamind-dashboard-refresh
   cancel-in-progress: false
 
 jobs:
-  update-data:
+  build:
     runs-on: ubuntu-24.04
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
-
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
           node-version: 22
-
-      - name: Test history preservation
-        run: node --test scripts/update-stars.test.mjs
-
-      - name: Fetch latest DataMind metrics
-        run: node scripts/update-stars.mjs
+      - name: Test authentication and history preservation
+        run: node --test scripts/*.test.mjs
+      - name: Verify repository contains no protected plaintext
+        run: node scripts/verify-public.mjs
+      - name: Decrypt source in temporary ignored directory
+        run: node scripts/secure-build.mjs decrypt
+        env:
+          DASHBOARD_PASSWORD: ${{ secrets.DASHBOARD_PASSWORD }}
+      - name: Update metrics in temporary source
+        if: github.event_name != 'push'
+        working-directory: .private/source
+        run: node ../../scripts/update-stars.mjs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Commit refreshed snapshot
+      - name: Compress, encrypt and verify exact round-trip
+        run: node scripts/secure-build.mjs encrypt
+        env:
+          DASHBOARD_PASSWORD: ${{ secrets.DASHBOARD_PASSWORD }}
+      - name: Verify and stage allowlisted files only
+        run: |
+          node scripts/verify-public.mjs
+          node scripts/stage-pages.mjs
+      - name: Commit verified encrypted snapshot
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/stars.json data/stars.js index.html
-          git diff --cached --quiet && exit 0
-          git commit -m "Update dashboard snapshot"
-          git push
+          git add encrypted/dashboard.js data/stars.json data/stars.js index.html public.js styles.css dataflex-theme.css
+          if ! git diff --cached --quiet; then
+            git commit -m "Update encrypted dashboard snapshot"
+            git push
+          fi
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload only verified public artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .private/pages
+      - name: Remove decrypted temporary files
+        if: always()
+        run: rm -rf -- .private/source .private/pages
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy verified encrypted dashboard
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,1 +1,11 @@
 .DS_Store
+
+# Decrypted sources, backups and temporary artifacts must never be published.
+.private/
+.private-*/
+backups/
+*.plaintext
+.env
+.env.*
+playwright-report/
+test-results/
