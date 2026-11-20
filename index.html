@@ -10,6 +10,7 @@
     <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=20260918-star" sizes="180x180" />
     <link rel="stylesheet" href="./styles.css?v=20260918-compact" />
     <link rel="stylesheet" href="./dataflex-theme.css?v=20260918" />
+    <link rel="stylesheet" href="./access-gate.css?v=20261120" />
   </head>
   <body>
     <div class="app-shell">
@@ -66,6 +67,17 @@
           <div class="traffic-snapshot-note">口径：GitHub <code>stargazers/history</code> 每日统计（UTC），补齐零新增日期；当日数据截至快照抓取时点，并非全天结果。</div>
         </section>
 
+        <section class="panel" id="accessGate" aria-labelledby="accessTitle">
+          <h2 id="accessTitle">解锁更多内容</h2>
+          <p>输入口令后查看后续内容，此浏览器会记住解锁状态。</p>
+          <form id="accessForm">
+            <label for="accessPassword">访问口令</label>
+            <input id="accessPassword" type="password" autocomplete="current-password" required aria-describedby="accessError" />
+            <button class="inline-button" type="submit">解锁</button>
+          </form>
+          <p id="accessError" role="status" aria-live="polite"></p>
+        </section>
+        <div id="lockedContent" hidden>
         <section class="panel" id="visitor-star">
           <div class="panel-heading">
             <div>
@@ -179,6 +191,7 @@
           <details class="traffic-daily-details"><summary><span>Top 30 共同关注项目</span><span class="traffic-details-toggle"><span class="when-closed">展开</span><span class="when-open">收起</span><i aria-hidden="true"></i></span></summary><div class="traffic-daily-table-scroll"><table class="traffic-daily-table"><thead><tr><th>项目</th><th>共同用户</th><th>占比</th><th>语言</th><th>Stars</th><th>分类 / 描述</th></tr></thead><tbody id="networkRankingBody"></tbody></table></div></details>
           <p class="network-note">口径：样本为 2026 年 9 月加星的当前用户，每人读取最近 100 个公开收藏；排除 DataMind，按共同用户人数排序，同人数按项目名排序，占比以成功读取用户为分母。排名反映近期收藏共现，不代表完整历史或实际使用关系；潜在场景为待验证推断。完整下载数据包含全部至少 2 人共现的项目及共同用户。</p>
         </section>
+        </div>
       </main>
 
       <footer class="footer">
@@ -187,7 +200,8 @@
       </footer>
     </div>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    <script src="./data/stars.js?v=202611172156"></script>
+    <script src="./access-gate.js?v=20261120"></script>
+    <script src="./data/stars.js?v=202611181011"></script>
     <script src="./data/regions.js?v=20261008-monthly"></script>
     <script src="./data/network.js?v=20261008"></script>
     <script src="./data/traffic-history.js?v=20261112"></script>

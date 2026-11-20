@@ -1,0 +1,8 @@
+#lockedContent { display: contents; }
+#lockedContent[hidden], #accessGate[hidden] { display: none !important; }
+#accessGate { padding: 28px; }
+#accessGate h2 { margin: 0 0 12px; font-size: 20px; }
+#accessGate p { color: #657387; }
+#accessForm { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+#accessPassword { font: inherit; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px 12px; max-width: 100%; box-sizing: border-box; }
+#accessError { min-height: 1.5em; margin-bottom: 0; color: #b42318 !important; }
