@@ -12,25 +12,44 @@
     try { localStorage.removeItem(storageKey); localStorage.removeItem('datamind-dashboard-unlocked-v1'); } catch {}
     try { sessionStorage.removeItem(storageKey); } catch {}
   };
-  function restoredHTML(files) {
+  function restoredHTML(files, persistence) {
     let html = files['index.html'];
     html = html.replace(/<link\b[^>]*rel="stylesheet"[^>]*href="\.\/([^"?]+)[^"]*"[^>]*>/g, (tag, name) => files[name] ? `<style>${files[name]}</style>` : tag);
     html = html.replace(/<script src="\.\/([^"?]+)[^"]*"><\/script>/g, (tag, name) => {
       if (!(name in files)) throw new Error('Missing encrypted asset');
       return `<script>${files[name].replace(/<\/script/gi, '<\\/script')}</script>`;
     });
-    const lockCode = `(() => { const b=document.createElement('button'); b.id='relockDashboard'; b.className='quiet-button'; b.textContent='重新锁定'; b.type='button'; b.style.cssText='position:fixed;right:20px;bottom:20px;z-index:10000;background:white'; b.onclick=()=>{try{localStorage.removeItem('${storageKey}');}catch{}try{sessionStorage.removeItem('${storageKey}');sessionStorage.setItem('datamind-relock','1');}catch{} location.reload();}; document.body.append(b); })();`;
+    const lockCode = `(() => {
+      const bar=document.createElement('div');
+      bar.id='unlockStatusBar';
+      bar.setAttribute('role','region');
+      bar.setAttribute('aria-label','内容解锁状态');
+      bar.style.cssText='grid-column:1 / -1;min-width:0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 0 24px;font-size:14px;color:#14243b';
+      const status=document.createElement('span');
+      status.textContent='已解锁 · ${persistence}';
+      const b=document.createElement('button');
+      b.id='relockDashboard'; b.className='quiet-button'; b.textContent='重新锁定'; b.type='button';
+      b.style.cssText='border:0;border-radius:8px;background:#3454cf;color:white;padding:10px 20px;font:inherit;font-weight:600;cursor:pointer';
+      b.onclick=()=>{try{localStorage.removeItem('${storageKey}');}catch{}try{sessionStorage.removeItem('${storageKey}');sessionStorage.setItem('datamind-relock','1');}catch{} location.reload();};
+      bar.append(status,b);
+      const first=document.querySelector('#visitor-star');
+      first.before(bar);
+    })();`;
     return html.replace('</body>', `<script>${lockCode}</script></body>`);
   }
   async function unlock(key, save) {
     const compressed = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: decode(vault.iv), additionalData: new TextEncoder().encode(metadata) }, key, decode(vault.ciphertext));
     const stream = new Blob([compressed]).stream().pipeThrough(new DecompressionStream('gzip'));
     const files = JSON.parse(await new Response(stream).text());
-    const html = restoredHTML(files);
     const raw = encode(await crypto.subtle.exportKey('raw', key));
     forget();
     const saved = JSON.stringify({ salt: vault.salt, iterations: vault.iterations, key: raw });
-    try { (save ? localStorage : sessionStorage).setItem(storageKey, saved); } catch {}
+    let persistence = '仅本次页面';
+    try {
+      (save ? localStorage : sessionStorage).setItem(storageKey, saved);
+      persistence = save ? '此浏览器已记住' : '仅当前会话';
+    } catch {}
+    const html = restoredHTML(files, persistence);
     input.value = '';
     document.open(); document.write(html); document.close();
   }
