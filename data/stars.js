@@ -1,6 +1,6 @@
 window.DATAMIND_STAR_SNAPSHOT = {
   "repo": "OpenDCAI/DataMind",
-  "fetched_at": "2026-11-22T20:30:09.113Z",
+  "fetched_at": "2026-11-24T01:17:52.079Z",
   "source": "GitHub REST API stargazers/history daily counts",
   "source_url": "https://api.github.com/repos/OpenDCAI/DataMind/stargazers/history",
   "stars": 456,
@@ -965,6 +965,14 @@ window.DATAMIND_STAR_SNAPSHOT = {
     },
     {
       "date": "2026-11-22",
+      "count": 0
+    },
+    {
+      "date": "2026-11-23",
+      "count": 0
+    },
+    {
+      "date": "2026-11-24",
       "count": 0
     }
   ]
